@@ -1,8 +1,11 @@
 from datetime import datetime
+from zoneinfo import ZoneInfo  # Python 3.9+
 
-current_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+# Set Malaysia timezone
+malaysia_time = datetime.now(ZoneInfo("Asia/Kuala_Lumpur")).strftime("%Y-%m-%d %H:%M:%S %Z")
 
-with open("output.txt", "a") as f:   # append mode
-    f.write(current_time + "\n")
+# Append to output.txt
+with open("output.txt", "a") as f:
+    f.write(malaysia_time + "\n")
 
-print("Written to output.txt:", current_time)
+print("Written to output.txt:", malaysia_time)

@@ -11,7 +11,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
       with:
-        token: ${{ secrets.MY_PAT }}
+        token: ${{ secrets.bla }}
 
     - name: Set up Python
       uses: actions/setup-python@v5

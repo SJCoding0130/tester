@@ -1,10 +1,11 @@
 from datetime import datetime
-from zoneinfo import ZoneInfo  # Python 3.9+
+import pytz
 
-# Set Malaysia timezone
-malaysia_time = datetime.now(ZoneInfo("Asia/Kuala_Lumpur")).strftime("%Y-%m-%d %H:%M:%S %Z")
+# Malaysia timezone
+malaysia_tz = pytz.timezone("Asia/Kuala_Lumpur")
+malaysia_time = datetime.now(malaysia_tz).strftime("%Y-%m-%d %H:%M:%S %Z")
 
-# Append to output.txt
+# Append timestamp to output.txt
 with open("output.txt", "a") as f:
     f.write(malaysia_time + "\n")
 

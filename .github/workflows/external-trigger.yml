@@ -24,16 +24,12 @@ jobs:
       run: |
         curl.exe -L "https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip" -o AssetRipper.zip
         Expand-Archive AssetRipper.zip -DestinationPath AssetRipper
-
+        
     - name: Run AssetRipper (primary content only)
       run: |
-        # Extract everything first
-        .\AssetRipper\AssetRipper.exe target.bin -o rip_output -q
+        # Export only primary content
+        .\AssetRipper\AssetRipper.Console.exe -i target.bin -o rip_output -e PrimaryContent -q
         
-        # Keep only Assets folder
-        Remove-Item -Recurse -Force rip_output\ExportedProject\Packages
-        Remove-Item -Recurse -Force rip_output\ExportedProject\ProjectSettings
-
     - name: Save output list
       run: |
         (Get-ChildItem -Recurse rip_output | Select-Object FullName) | Out-File output.txt

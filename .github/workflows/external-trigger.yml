@@ -29,19 +29,19 @@ jobs:
       run: |
         .\AssetRipper\AssetRipper.exe target.bin -o rip_output -q
 
-    - name: Save output list
+    - name: Save file list as output.txt
       run: |
         (Get-ChildItem -Recurse rip_output | Select-Object FullName) | Out-File output.txt
 
-    - name: Save manifest.json separately
+    - name: Copy all extracted files to repo
       run: |
-        Copy-Item "D:\a\tester\tester\rip_output\ExportedProject\Packages\manifest.json" -Destination "./manifest.json" -Force
+        robocopy rip_output . /E /NFL /NDL /NJH /NJS /nc /ns /np
 
-    - name: Commit output files
+    - name: Commit all files
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "actions@github.com"
 
-        git add output.txt manifest.json
-        git commit -m "Update output.txt and manifest.json" || echo "No changes"
+        git add .
+        git commit -m "Add all AssetRipper extracted files" || echo "No changes"
         git push

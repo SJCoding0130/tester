@@ -28,7 +28,7 @@ jobs:
     - name: Run AssetRipper (primary content only)
       run: |
         # Export only primary content
-        AssetRipper.exe -i "Path\To\Your\UnityGame\file.exe" -o "Path\To\OutputFolder" --export-mode PrimaryContent -q
+        .\AssetRipper\AssetRipper.exe target.bin -o rip_output --export-mode PrimaryContent -q
         
     - name: Save output list
       run: |

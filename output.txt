@@ -4,4 +4,8 @@ FullName
 D:\a\tester\tester\rip_output\AuxiliaryFiles
 D:\a\tester\tester\rip_output\ExportedProject
 D:\a\tester\tester\rip_output\AuxiliaryFiles\path_id_map.json
+D:\a\tester\tester\rip_output\ExportedProject\Packages
+D:\a\tester\tester\rip_output\ExportedProject\ProjectSettings
+D:\a\tester\tester\rip_output\ExportedProject\Packages\manifest.json
+D:\a\tester\tester\rip_output\ExportedProject\ProjectSettings\ProjectVersion.txt
 

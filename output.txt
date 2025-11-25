@@ -1,0 +1,7 @@
+
+FullName
+--------
+D:\a\tester\tester\rip_output\AuxiliaryFiles
+D:\a\tester\tester\rip_output\ExportedProject
+D:\a\tester\tester\rip_output\AuxiliaryFiles\path_id_map.json
+

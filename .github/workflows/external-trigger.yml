@@ -5,7 +5,10 @@ on:
 
 jobs:
   run-python:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
+
+    env:
+      ASSET_RIPPER_VERSION: "0.3.4.0"
 
     steps:
     - name: Checkout repo
@@ -13,13 +16,28 @@ jobs:
       with:
         token: ${{ secrets.bla }}
 
-    - name: Run Python and save output
-      run: python script.py >> output.txt
+    - name: Download CloudFront file
+      run: |
+        curl.exe -L "https://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/Android" -o target.bin
+
+    - name: Download & unzip AssetRipper
+      run: |
+        curl.exe -L "https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip" -o AssetRipper.zip
+        Expand-Archive AssetRipper.zip -DestinationPath AssetRipper
+
+    - name: Run AssetRipper
+      run: |
+        .\AssetRipper\AssetRipper.exe target.bin -o rip_output -q
+
+    - name: Save output list
+      run: |
+        (Get-ChildItem -Recurse rip_output | Select-Object FullName) | Out-File output.txt
 
     - name: Commit output
       run: |
         git config --global user.name "github-actions"
         git config --global user.email "actions@github.com"
+
         git add output.txt
         git commit -m "Update output.txt" || echo "No changes"
         git push

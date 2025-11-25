@@ -8,7 +8,7 @@ jobs:
     runs-on: windows-latest
 
     env:
-      ASSET_RIPPER_VERSION: "1.3.6"
+      ASSET_RIPPER_VERSION: "0.3.4.0"
 
     steps:
     - name: Checkout repo
@@ -28,7 +28,7 @@ jobs:
     - name: Run AssetRipper (primary content only)
       run: |
         # Export only primary content
-        .\AssetRipper.GUI.Free.exe target.bin -o rip_output -q
+        .\AssetRipper\AssetRipper.exe target.bin -o rip_output -q
         
     - name: Save output list
       run: |

@@ -47,38 +47,38 @@ jobs:
     
 
     # Optional AssetRipper steps (commented)
-    # - name: Download & unzip AssetRipper
-    #   run: |
-    #     curl.exe -L "https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip" -o AssetRipper.zip
-    #     Expand-Archive AssetRipper.zip -DestinationPath AssetRipper
-    #
-    # - name: Run AssetRipper (primary content only)
-    #   run: |
-    #     .\AssetRipper\AssetRipper.exe target.bin -o rip_output -q
-    #
-    # - name: Save output list
-    #   run: |
-    #     (Get-ChildItem -Recurse rip_output | Select-Object FullName) | Out-File output.txt
-
-    - name: Push to private repo
+    - name: Download & unzip AssetRipper
       run: |
-        # Configure Git
-        git config --global user.name "github-actions"
-        git config --global user.email "actions@github.com"
+         curl.exe -L "https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip" -o AssetRipper.zip
+         Expand-Archive AssetRipper.zip -DestinationPath AssetRipper
+    
+    - name: Run AssetRipper (primary content only)
+      run: |
+         .\AssetRipper\AssetRipper.exe target.bin -o rip_output -q
+    
+    - name: Save output list
+      run: |
+         (Get-ChildItem -Recurse rip_output | Select-Object FullName) | Out-File output.txt
+
+    #- name: Push to private repo
+    #  run: |
+    #    # Configure Git
+    #    git config --global user.name "github-actions"
+    #    git config --global user.email "actions@github.com"
 
         # Clone the target repo
-        git clone https://${{ secrets.OTHER_REPO_TOKEN }}@${{ secrets.github }} target-repo
-        cd target-repo
+    #    git clone https://${{ secrets.OTHER_REPO_TOKEN }}@${{ secrets.github }} target-repo
+    #    cd target-repo
 
         # Create the folder if not exists
-        if (-Not (Test-Path -Path "generated")) {
-        New-Item -ItemType Directory -Path "generated"
-        }
+    #    if (-Not (Test-Path -Path "generated")) {
+    #    New-Item -ItemType Directory -Path "generated"
+    #    }
 
         # Copy generated files from workflow workspace into the folder
-        Copy-Item ../output.txt generated/
-        Copy-Item ../*.asset generated/
+    #    Copy-Item ../output.txt generated/
+    #    Copy-Item ../*.asset generated/
 
-        git add .
-        git commit -m "Update generated chapter assets" || echo "No changes to commit"
-        git push origin main
+    #    git add .
+    #    git commit -m "Update generated chapter assets" || echo "No changes to commit"
+    #    git push origin main

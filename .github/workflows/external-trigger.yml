@@ -57,7 +57,7 @@ jobs:
         Get-ChildItem -Path . -Filter "*.asset" | ForEach-Object {
         $asset_file = $_.FullName
         $output_dir = "rip_output\$($_.BaseName)"
-        Write-Host "Ripping $asset_file -> $output_dir"
+        # Write-Host "Ripping $asset_file -> $output_dir"
         .\AssetRipper\AssetRipper.exe $asset_file -o $output_dir -q > $null 2>&1
         }
     

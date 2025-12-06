@@ -61,7 +61,7 @@ jobs:
       shell: pwsh
       run: |
         $base_url = "${{ secrets.link2 }}"
-        $meta_file = "etag_repo/etag-data.json"
+        $meta_file = "generated/etag-data.json"
 
         # Load metadata from other repo
         if (Test-Path $meta_file) {

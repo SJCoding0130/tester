@@ -71,11 +71,13 @@ jobs:
         cd target-repo
 
         # Create the folder if not exists
-        mkdir -p generated
+        if (-Not (Test-Path -Path "generated")) {
+        New-Item -ItemType Directory -Path "generated"
+        }
 
         # Copy generated files from workflow workspace into the folder
-        cp ../output.txt generated/
-        cp ../*.asset generated/
+        Copy-Item ../output.txt generated/
+        Copy-Item ../*.asset generated/
 
         git add .
         git commit -m "Update generated chapter assets" || echo "No changes to commit"

@@ -57,4 +57,5 @@ jobs:
 
         git add output.txt
         git commit -m "Update extracted chapter assets" || echo "No changes to commit"
+        git pull --rebase origin main
         git push

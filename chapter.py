@@ -48,4 +48,5 @@ if __name__ == "__main__":
         print("Usage: python extract_manifest.py <path_to_unityfs_file>")
     else:
         file_path = sys.argv[1]
-        save_manifest(file_path, "output.txt")
+        save_manifest(file_path, "outputs.txt")
+

@@ -118,8 +118,9 @@ jobs:
         }
 
         # Copy all .asset files
-        Get-ChildItem -Path $workflow_root -Filter "*.book.asset" | ForEach-Object {
-        Copy-Item $_.FullName -Destination $target_folder -Force
+        $pattern = Join-Path $workflow_root "rip_output\*\ExportedProject\Assets\adv\*.chapter.asset"
+        Get-ChildItem -Path $pattern | ForEach-Object {
+          Copy-Item $_.FullName -Destination $target_folder -Force
         }
 
         # Commit and push changes

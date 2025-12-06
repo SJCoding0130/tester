@@ -38,7 +38,7 @@ jobs:
     - name: Download CloudFront file for chapter.asset
       run: |
        $base_url = "${{secrets.link2}}"
-       Get-Content output.txt | ForEach-Object {
+       Get-Content outputs.txt | ForEach-Object {
         $file_name = $_.Trim()
         $url = "$base_url/$file_name"
         Write-Host "Downloading $url..."
@@ -82,6 +82,7 @@ jobs:
 
         # Copy generated files from workflow workspace into the folder
         Copy-Item ../output.txt generated/
+        Copy-Item ../outputs.txt generated/
         Copy-Item ../*.asset generated/
 
         git add .

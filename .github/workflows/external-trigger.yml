@@ -11,16 +11,25 @@ jobs:
       ASSET_RIPPER_VERSION: "0.3.4.0"
 
     steps:
+    # ==========================
+    # 1. Checkout main repo (Repo A)
+    # ==========================
     - name: Checkout repo
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.bla }}
-        fetch-depth: 0  # important for pushing changes safely
+        fetch-depth: 0
 
+    # ==========================
+    # 2. Download main bin file
+    # ==========================
     - name: Download CloudFront file
       run: |
         curl.exe -L "${{secrets.link1}}" -o target.bin
 
+    # ==========================
+    # 3. Python setup
+    # ==========================
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -34,119 +43,132 @@ jobs:
     - name: List down all the chapter.asset
       run: |
         python "chapter.py" "target.bin"
-        
+
+    # ==========================
+    # 4. Checkout ETag repo (Repo B)
+    # ==========================
+    - name: Checkout ETag repo
+      uses: actions/checkout@v4
+      with:
+        repository: your-org/etag-repo
+        path: etag_repo
+        token: ${{ secrets.OTHER_REPO_TOKEN }}
+
+    # ==========================
+    # 5. Download chapter.assets only if changed
+    # ==========================
     - name: Download CloudFront file for chapter.asset (only if changed)
+      shell: pwsh
       run: |
         $base_url = "${{ secrets.link2 }}"
-        $meta_file = "etag-data.json"
+        $meta_file = "etag_repo/etag-data.json"
 
-        # Load existing metadata JSON if it exists
+        # Load metadata from other repo
         if (Test-Path $meta_file) {
-        $meta = Get-Content $meta_file -Raw | ConvertFrom-Json
+          $meta = Get-Content $meta_file -Raw | ConvertFrom-Json
         } else {
-        $meta = @{}
+          $meta = @{}
         }
 
         # Process each file in outputs.txt
         Get-Content outputs.txt | ForEach-Object {
-        $file_name = $_.Trim()
-        $url = "$base_url/$file_name"
+          $file_name = $_.Trim()
+          $url = "$base_url/$file_name"
 
-        # Ensure metadata entry exists for this file
-        if (-not $meta.ContainsKey($file_name)) {
+          # Ensure metadata entry exists
+          if (-not $meta.ContainsKey($file_name)) {
             $meta[$file_name] = [PSCustomObject]@{
-                ETag = ""
-                LastModified = ""
-                LastCheck = ""
+              ETag = ""
+              LastModified = ""
+              LastCheck = ""
             }
-        }
+          }
 
-        # Fetch headers
-        $response = curl.exe -sI $url
+          # Fetch headers only
+          $response = curl.exe -sI $url
 
-        # Parse ETag and Last-Modified
-        $current_etag = ($response -split "`r`n" | Where-Object { $_ -match "^ETag:" }) -replace "ETag:\s*", ""
-        $current_mod  = ($response -split "`r`n" | Where-Object { $_ -match "^Last-Modified:" }) -replace "Last-Modified:\s*", ""
+          $current_etag = ($response -split "`r`n" | Where-Object { $_ -match "^ETag:" }) -replace "ETag:\s*", ""
+          $current_mod  = ($response -split "`r`n" | Where-Object { $_ -match "^Last-Modified:" }) -replace "Last-Modified:\s*", ""
 
-        $saved_etag = $meta[$file_name].ETag
-        $saved_mod  = $meta[$file_name].LastModified
+          $saved_etag = $meta[$file_name].ETag
+          $saved_mod  = $meta[$file_name].LastModified
 
-        # Compare ETag or Last-Modified (if either changes, redownload)
-        if ($current_etag -ne $saved_etag -or $current_mod -ne $saved_mod) {
+          # Compare for changes
+          if ($current_etag -ne $saved_etag -or $current_mod -ne $saved_mod) {
             Write-Host "Downloading $file_name (file changed)"
             curl.exe -L $url -o (Split-Path $file_name -Leaf)
 
-            # Update metadata
             $meta[$file_name].ETag = $current_etag
             $meta[$file_name].LastModified = $current_mod
-            $meta[$file_name].LastCheck = (Get-Date).ToString("o")
+          } else {
+            Write-Host "$file_name is up-to-date"
+          }
+
+          $meta[$file_name].LastCheck = (Get-Date).ToString("o")
         }
-        else {
-            Write-Host "$file_name is up-to-date (ETag/Last-Modified match)"
-            $meta[$file_name].LastCheck = (Get-Date).ToString("o")
-        }
-    }
 
-    # Save updated metadata
-    $meta | ConvertTo-Json -Depth 5 | Set-Content $meta_file
+        # Save updated metadata
+        $meta | ConvertTo-Json -Depth 10 | Set-Content $meta_file
 
-
-    
-
-    # Optional AssetRipper steps (commented)
+    # ==========================
+    # 6. Optionally run AssetRipper
+    # ==========================
     - name: Download & unzip AssetRipper
       run: |
-         curl.exe -L "https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip" -o AssetRipper.zip
-         Expand-Archive AssetRipper.zip -DestinationPath AssetRipper
-    
+        curl.exe -L "https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip" -o AssetRipper.zip
+        Expand-Archive AssetRipper.zip -DestinationPath AssetRipper
+
     - name: Run AssetRipper on downloaded chapter.assets
       run: |
         Get-ChildItem -Path . -Filter "*.asset" | ForEach-Object {
-        $asset_file = $_.FullName
-        $output_dir = "rip_output\$($_.BaseName)"
-        # Write-Host "Ripping $asset_file -> $output_dir"
-        .\AssetRipper\AssetRipper.exe $asset_file -o $output_dir -q > $null 2>&1
+          $asset_file = $_.FullName
+          $output_dir = "rip_output\$($_.BaseName)"
+          .\AssetRipper\AssetRipper.exe $asset_file -o $output_dir -q > $null 2>&1
         }
-    
+
+    # ==========================
+    # 7. Save output list
+    # ==========================
     - name: Save output list
       run: |
-         (Get-ChildItem -Recurse rip_output | Select-Object FullName) | Out-File output.txt
+        (Get-ChildItem -Recurse rip_output | Select-Object FullName) | Out-File output.txt
 
+    # ==========================
+    # 8. Push results + updated ETag data to Repo B
+    # ==========================
     - name: Push to private repo
+      shell: pwsh
       run: |
-        # Configure Git
         git config --global user.name "github-actions"
         git config --global user.email "actions@github.com"
 
-        # Clone the target repo
+        # Clone Repo B
         git clone https://${{ secrets.OTHER_REPO_TOKEN }}@${{ secrets.github }} target-repo
         cd target-repo
 
-        # Create the folder if it does not exist
-        $target_folder = Join-Path $PWD "generate"
-        if (-Not (Test-Path $target_folder)) {
-        New-Item -ItemType Directory -Path $target_folder | Out-Null
-        }
-
-        # Set workflow workspace root
         $workflow_root = $env:GITHUB_WORKSPACE
+        $target_folder = Join-Path $PWD "generate"
 
-        # Copy specific files safely if they exist
-        $files_to_copy = @("output.txt", "outputs.txt","e-tag.txt")
+        if (-Not (Test-Path $target_folder)) {
+          New-Item -ItemType Directory -Path $target_folder | Out-Null
+        }
+
+        # Copy required files
+        $files_to_copy = @("output.txt", "outputs.txt", "etag_repo/etag-data.json")
         foreach ($file in $files_to_copy) {
-        $source_path = Join-Path $workflow_root $file
-        if (Test-Path $source_path) {
+          $source_path = Join-Path $workflow_root $file
+          if (Test-Path $source_path) {
             Copy-Item $source_path -Destination $target_folder -Force
-        }
+          }
         }
 
-        # Copy all .asset files
+        # Copy chapter.asset files
         $pattern = Join-Path $workflow_root "rip_output\*\ExportedProject\Assets\MonoBehaviour\*.chapter.asset"
         Get-ChildItem -Path $pattern | ForEach-Object {
           Copy-Item $_.FullName -Destination $target_folder -Force
         }
 
-        # Commit and push changes
         git add .
-        git commit -m "Update generated chapter assets" || echo "No changes to commit"
+        git commit -m "Update generated chapter assets + ETag metadata" || echo "No changes"
         git push origin main
+

@@ -50,8 +50,8 @@ jobs:
     - name: Checkout ETag repo
       uses: actions/checkout@v4
       with:
-        repository: your-org/etag-repo
-        path: etag_repo
+        repository: ${{ secrets.github }}
+        path: generated
         token: ${{ secrets.OTHER_REPO_TOKEN }}
 
     # ==========================

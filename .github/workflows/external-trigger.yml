@@ -15,6 +15,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         token: ${{ secrets.bla }}
+        fetch-depth: 0  # important for pushing changes safely
 
     - name: Download CloudFront file
       run: |
@@ -23,7 +24,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-       python-version: "3.11"
+        python-version: "3.11"
 
     - name: Install UnityPy
       run: |
@@ -33,20 +34,21 @@ jobs:
     - name: List down all the chapter.asset
       run: |
         python "chapter.py" "target.bin"
+        type output.txt  # prints the file paths in the workflow log
 
-#    - name: Download & unzip AssetRipper
- #     run: |
-  #      curl.exe -L "https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip" -o AssetRipper.zip
-   #     Expand-Archive AssetRipper.zip -DestinationPath AssetRipper
-        
-    #- name: Run AssetRipper (primary content only)
-     # run: |
-        # Export only primary content
-      #  .\AssetRipper\AssetRipper.exe target.bin -o rip_output -q
-        
-#    - name: Save output list
- #     run: |
-  #      (Get-ChildItem -Recurse rip_output | Select-Object FullName) | Out-File output.txt
+    # Optional AssetRipper steps (commented)
+    # - name: Download & unzip AssetRipper
+    #   run: |
+    #     curl.exe -L "https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip" -o AssetRipper.zip
+    #     Expand-Archive AssetRipper.zip -DestinationPath AssetRipper
+    #
+    # - name: Run AssetRipper (primary content only)
+    #   run: |
+    #     .\AssetRipper\AssetRipper.exe target.bin -o rip_output -q
+    #
+    # - name: Save output list
+    #   run: |
+    #     (Get-ChildItem -Recurse rip_output | Select-Object FullName) | Out-File output.txt
 
     - name: Commit output
       run: |
@@ -54,4 +56,5 @@ jobs:
         git config --global user.email "actions@github.com"
 
         git add output.txt
+        git commit -m "Update extracted chapter assets" || echo "No changes to commit"
         git push

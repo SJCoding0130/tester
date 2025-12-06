@@ -118,7 +118,7 @@ jobs:
         }
 
         # Copy all .asset files
-        Get-ChildItem -Path $workflow_root -Filter "*.asset" | ForEach-Object {
+        Get-ChildItem -Path $workflow_root -Filter "*.book.asset" | ForEach-Object {
         Copy-Item $_.FullName -Destination $target_folder -Force
         }
 

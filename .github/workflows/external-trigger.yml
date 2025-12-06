@@ -35,15 +35,15 @@ jobs:
       run: |
         python "chapter.py" "target.bin"
         
-    #- name: Download CloudFront file for chapter.asset
-    #  run: |
-    #   $base_url = "${{secrets.link2}}"
-    #   Get-Content output.txt | ForEach-Object {
-    #    $file_name = $_.Trim()
-    #    $url = "$base_url$file_name"
-    #    Write-Host "Downloading $url..."
-    #    curl.exe -L $url -o (Split-Path $file_name -Leaf)
-    #   }
+    - name: Download CloudFront file for chapter.asset
+      run: |
+       $base_url = "${{secrets.link2}}"
+       Get-Content output.txt | ForEach-Object {
+        $file_name = $_.Trim()
+        $url = "$base_url$file_name"
+        Write-Host "Downloading $url..."
+        curl.exe -L $url -o (Split-Path $file_name -Leaf)
+       }
     
 
     # Optional AssetRipper steps (commented)

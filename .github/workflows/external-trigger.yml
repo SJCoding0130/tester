@@ -75,16 +75,30 @@ jobs:
         git clone https://${{ secrets.OTHER_REPO_TOKEN }}@${{ secrets.github }} target-repo
         cd target-repo
 
-        # Create the folder if not exists
-        if (-Not (Test-Path -Path "generate")) {
-        New-Item -ItemType Directory -Path "generate"
+        # Create the folder if it does not exist
+        $target_folder = Join-Path $PWD "generate"
+        if (-Not (Test-Path $target_folder)) {
+        New-Item -ItemType Directory -Path $target_folder | Out-Null
         }
 
-        # Copy generated files from workflow workspace into the folder
-        Copy-Item ../output.txt generated/
-        Copy-Item ../outputs.txt generated/
-        Copy-Item ../*.asset generated/
+        # Set workflow workspace root
+        $workflow_root = $env:GITHUB_WORKSPACE
 
+        # Copy specific files safely if they exist
+        $files_to_copy = @("output.txt", "outputs.txt")
+        foreach ($file in $files_to_copy) {
+        $source_path = Join-Path $workflow_root $file
+        if (Test-Path $source_path) {
+            Copy-Item $source_path -Destination $target_folder -Force
+        }
+        }
+
+        # Copy all .asset files
+        Get-ChildItem -Path $workflow_root -Filter "*.asset" | ForEach-Object {
+        Copy-Item $_.FullName -Destination $target_folder -Force
+        }
+
+        # Commit and push changes
         git add .
         git commit -m "Update generated chapter assets" || echo "No changes to commit"
         git push origin main

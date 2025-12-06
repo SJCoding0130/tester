@@ -38,35 +38,58 @@ jobs:
     - name: Download CloudFront file for chapter.asset (only if changed)
       run: |
         $base_url = "${{ secrets.link2 }}"
-        $etag_file = "e-tag.txt"
+        $meta_file = "etag-data.json"
 
-        # Read previously saved ETag if it exists
-        $saved_etag = ""
-        if (Test-Path $etag_file) {
-        $saved_etag = Get-Content $etag_file -Raw
+        # Load existing metadata JSON if it exists
+        if (Test-Path $meta_file) {
+        $meta = Get-Content $meta_file -Raw | ConvertFrom-Json
+        } else {
+        $meta = @{}
         }
 
         # Process each file in outputs.txt
         Get-Content outputs.txt | ForEach-Object {
-            $file_name = $_.Trim()
-            $url = "$base_url/$file_name"
+        $file_name = $_.Trim()
+        $url = "$base_url/$file_name"
 
-        # Get the current ETag from the server
+        # Ensure metadata entry exists for this file
+        if (-not $meta.ContainsKey($file_name)) {
+            $meta[$file_name] = [PSCustomObject]@{
+                ETag = ""
+                LastModified = ""
+                LastCheck = ""
+            }
+        }
+
+        # Fetch headers
         $response = curl.exe -sI $url
-        $current_etag = ($response -split "`r`n" | Where-Object { $_ -match "^ETag:" }) -replace "ETag:\s*", ""
 
-        # Compare with saved ETag
-        if ($current_etag -ne $saved_etag) {
-            Write-Host "Downloading $file_name (ETag changed)"
+        # Parse ETag and Last-Modified
+        $current_etag = ($response -split "`r`n" | Where-Object { $_ -match "^ETag:" }) -replace "ETag:\s*", ""
+        $current_mod  = ($response -split "`r`n" | Where-Object { $_ -match "^Last-Modified:" }) -replace "Last-Modified:\s*", ""
+
+        $saved_etag = $meta[$file_name].ETag
+        $saved_mod  = $meta[$file_name].LastModified
+
+        # Compare ETag or Last-Modified (if either changes, redownload)
+        if ($current_etag -ne $saved_etag -or $current_mod -ne $saved_mod) {
+            Write-Host "Downloading $file_name (file changed)"
             curl.exe -L $url -o (Split-Path $file_name -Leaf)
 
-            # Update saved ETag
-            Set-Content -Path $etag_file -Value $current_etag
+            # Update metadata
+            $meta[$file_name].ETag = $current_etag
+            $meta[$file_name].LastModified = $current_mod
+            $meta[$file_name].LastCheck = (Get-Date).ToString("o")
         }
         else {
-            Write-Host "$file_name is up-to-date (ETag matches)"
+            Write-Host "$file_name is up-to-date (ETag/Last-Modified match)"
+            $meta[$file_name].LastCheck = (Get-Date).ToString("o")
         }
-        }
+    }
+
+    # Save updated metadata
+    $meta | ConvertTo-Json -Depth 5 | Set-Content $meta_file
+
 
     
 

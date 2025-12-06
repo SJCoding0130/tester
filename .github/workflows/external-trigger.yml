@@ -35,15 +35,39 @@ jobs:
       run: |
         python "chapter.py" "target.bin"
         
-    - name: Download CloudFront file for chapter.asset
+    - name: Download CloudFront file for chapter.asset (only if changed)
       run: |
-       $base_url = "${{secrets.link2}}"
-       Get-Content outputs.txt | ForEach-Object {
-        $file_name = $_.Trim()
-        $url = "$base_url/$file_name"
-        Write-Host "Downloading $url..."
-        curl.exe -L $url -o (Split-Path $file_name -Leaf)
-       }
+        $base_url = "${{ secrets.link2 }}"
+        $etag_file = "e-tag.txt"
+
+        # Read previously saved ETag if it exists
+        $saved_etag = ""
+        if (Test-Path $etag_file) {
+        $saved_etag = Get-Content $etag_file -Raw
+        }
+
+        # Process each file in outputs.txt
+        Get-Content outputs.txt | ForEach-Object {
+            $file_name = $_.Trim()
+            $url = "$base_url/$file_name"
+
+        # Get the current ETag from the server
+        $response = curl.exe -sI $url
+        $current_etag = ($response -split "`r`n" | Where-Object { $_ -match "^ETag:" }) -replace "ETag:\s*", ""
+
+        # Compare with saved ETag
+        if ($current_etag -ne $saved_etag) {
+            Write-Host "Downloading $file_name (ETag changed)"
+            curl.exe -L $url -o (Split-Path $file_name -Leaf)
+
+            # Update saved ETag
+            Set-Content -Path $etag_file -Value $current_etag
+        }
+        else {
+            Write-Host "$file_name is up-to-date (ETag matches)"
+        }
+        }
+
     
 
     # Optional AssetRipper steps (commented)

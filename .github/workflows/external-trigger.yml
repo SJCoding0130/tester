@@ -50,7 +50,7 @@ jobs:
     - name: Checkout ETag repo
       uses: actions/checkout@v4
       with:
-        repository: ${{ secrets.github }}
+        repository: SJCoding0130/story
         path: generated
         token: ${{ secrets.OTHER_REPO_TOKEN }}
 

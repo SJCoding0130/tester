@@ -20,26 +20,30 @@ jobs:
       run: |
         curl.exe -L "https://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/Android" -o target.bin
 
-    - name: Download & unzip AssetRipper
+    - name: List down all the chapter.asset
       run: |
-        curl.exe -L "https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip" -o AssetRipper.zip
-        Expand-Archive AssetRipper.zip -DestinationPath AssetRipper
+        python "chapter.py" "target.bin"
+
+#    - name: Download & unzip AssetRipper
+ #     run: |
+  #      curl.exe -L "https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip" -o AssetRipper.zip
+   #     Expand-Archive AssetRipper.zip -DestinationPath AssetRipper
         
-    - name: Run AssetRipper (primary content only)
-      run: |
+    #- name: Run AssetRipper (primary content only)
+     # run: |
         # Export only primary content
-        .\AssetRipper\AssetRipper.exe target.bin -o rip_output -q
+      #  .\AssetRipper\AssetRipper.exe target.bin -o rip_output -q
         
-    - name: Save output list
-      run: |
-        (Get-ChildItem -Recurse rip_output | Select-Object FullName) | Out-File output.txt
+#    - name: Save output list
+ #     run: |
+  #      (Get-ChildItem -Recurse rip_output | Select-Object FullName) | Out-File output.txt
 
-    - name: Commit output
-      run: |
-        git config --global user.name "github-actions"
-        git config --global user.email "actions@github.com"
+#    - name: Commit output
+ #     run: |
+  #      git config --global user.name "github-actions"
+   #     git config --global user.email "actions@github.com"
 
-        git add output.txt
-        git add rip_output\ExportedProject\Assets\*
-        git commit -m "Update primary content only" || echo "No changes"
-        git push
+    #    git add output.txt
+     #   git add rip_output\ExportedProject\Assets\*
+      #  git commit -m "Update primary content only" || echo "No changes"
+       # git push

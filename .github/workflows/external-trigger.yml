@@ -70,9 +70,12 @@ jobs:
         git clone https://${{ secrets.OTHER_REPO_TOKEN }}@${{ secrets.github }} target-repo
         cd target-repo
 
-        # Copy generated files from workflow workspace
-        cp ../output.txt .
-        cp ../*.asset .   # or whatever other generated files you want
+        # Create the folder if not exists
+        mkdir -p generated
+
+        # Copy generated files from workflow workspace into the folder
+        cp ../output.txt generated/
+        cp ../*.asset generated/
 
         git add .
         git commit -m "Update generated chapter assets" || echo "No changes to commit"

@@ -19,7 +19,7 @@ jobs:
 
     - name: Download CloudFront file
       run: |
-        curl.exe -L "https://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/Android" -o target.bin
+        curl.exe -L "${{secrets.link1}}" -o target.bin
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -37,7 +37,7 @@ jobs:
         
     #- name: Download CloudFront file for chapter.asset
     #  run: |
-    #   $base_url = "https://d15iupkbkbqkwv.cloudfront.net/adv2024/"
+    #   $base_url = "${{secrets.link2}}"
     #   Get-Content output.txt | ForEach-Object {
     #    $file_name = $_.Trim()
     #    $url = "$base_url$file_name"
@@ -67,7 +67,7 @@ jobs:
         git config --global user.email "actions@github.com"
 
         # Clone the target repo
-        git clone https://${{ secrets.OTHER_REPO_TOKEN }}@github.com/SJCoding0130/story.git target-repo
+        git clone https://${{ secrets.OTHER_REPO_TOKEN }}@${{ secrets.github }} target-repo
         cd target-repo
 
         # Copy generated files from workflow workspace

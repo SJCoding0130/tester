@@ -67,7 +67,7 @@ jobs:
         git config --global user.email "actions@github.com"
 
         # Clone the target repo
-        git clone https://${{ secrets.OTHER_REPO_TOKEN }}@github.com/USERNAME/PRIVATE_REPO.git target-repo
+        git clone https://${{ secrets.OTHER_REPO_TOKEN }}@github.com/SJCoding0130/story.git target-repo
         cd target-repo
 
         # Copy generated files from workflow workspace

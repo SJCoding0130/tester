@@ -52,9 +52,14 @@ jobs:
          curl.exe -L "https://github.com/AssetRipper/AssetRipper/releases/download/${env:ASSET_RIPPER_VERSION}/AssetRipper_win_x64.zip" -o AssetRipper.zip
          Expand-Archive AssetRipper.zip -DestinationPath AssetRipper
     
-    - name: Run AssetRipper (primary content only)
+    - name: Run AssetRipper on downloaded chapter.assets
       run: |
-         .\AssetRipper\AssetRipper.exe target.bin -o rip_output -q
+        Get-ChildItem -Path . -Filter "*.asset" | ForEach-Object {
+        $asset_file = $_.FullName
+        $output_dir = "rip_output\$($_.BaseName)"
+        Write-Host "Ripping $asset_file -> $output_dir"
+        .\AssetRipper\AssetRipper.exe $asset_file -o $output_dir -q
+        }
     
     - name: Save output list
       run: |

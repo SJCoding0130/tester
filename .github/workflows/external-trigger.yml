@@ -154,7 +154,7 @@ jobs:
         }
 
         # Copy required files
-        $files_to_copy = @("output.txt", "outputs.txt", "etag_repo/etag-data.json")
+        $files_to_copy = @("output.txt", "outputs.txt", "generated/etag-data.json")
         foreach ($file in $files_to_copy) {
           $source_path = Join-Path $workflow_root $file
           if (Test-Path $source_path) {

@@ -51,7 +51,7 @@ jobs:
       uses: actions/checkout@v4
       with:
         repository: SJCoding0130/story
-        path: generated
+        path: generate
         token: ${{ secrets.OTHER_REPO_TOKEN }}
 
     # ==========================
@@ -61,7 +61,7 @@ jobs:
       shell: pwsh
       run: |
         $base_url = "${{ secrets.link2 }}"
-        $meta_file = "generated/etag-data.json"
+        $meta_file = "generate/etag-data.json"
 
         # Load metadata from other repo
         if (Test-Path $meta_file) {
@@ -195,7 +195,7 @@ jobs:
         }
 
         # Copy required files
-        $files_to_copy = @("output.txt", "outputs.txt", "generated/etag-data.json")
+        $files_to_copy = @("output.txt", "outputs.txt", "generate/etag-data.json")
         foreach ($file in $files_to_copy) {
           $source_path = Join-Path $workflow_root $file
           if (Test-Path $source_path) {

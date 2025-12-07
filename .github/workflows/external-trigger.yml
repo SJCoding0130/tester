@@ -60,12 +60,27 @@ jobs:
     - name: Download CloudFront file for chapter.asset (only if changed)
       shell: pwsh
       run: |
+       function ConvertTo-Hashtable($obj) {
+       if ($obj -is [System.Collections.IDictionary]) {
+        $hash = @{}
+        foreach ($key in $obj.Keys) {
+            $hash[$key] = ConvertTo-Hashtable $obj[$key]
+        }
+        return $hash
+       } elseif ($obj -is [System.Collections.IEnumerable] -and $obj -notlike [string]) {
+        return ($obj | ForEach-Object { ConvertTo-Hashtable $_ })
+       } else {
+        return $obj
+       }
+       }
+
         $base_url = "${{ secrets.link2 }}"
         $meta_file = "generate/etag-data.json"
 
         # Load metadata from other repo
         if (Test-Path $meta_file) {
-          $meta = Get-Content $meta_file -Raw | ConvertFrom-Json
+          $raw = Get-Content $meta_file -Raw | ConvertFrom-Json
+          $meta = ConvertTo-Hashtable $raw
         } else {
           $meta = @{}
         }

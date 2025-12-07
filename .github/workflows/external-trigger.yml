@@ -87,11 +87,43 @@ jobs:
           # Fetch headers only
           $response = curl.exe -sI $url
 
-          $current_etag = ($response -split "`r`n" | Where-Object { $_ -match "^ETag:" }) -replace "ETag:\s*", ""
-          $current_mod  = ($response -split "`r`n" | Where-Object { $_ -match "^Last-Modified:" }) -replace "Last-Modified:\s*", ""
+          #$current_etag = ($response -split "`r`n" | Where-Object { $_ -match "^ETag:" }) -replace "ETag:\s*", ""
+          #$current_mod  = ($response -split "`r`n" | Where-Object { $_ -match "^Last-Modified:" }) -replace "Last-Modified:\s*", ""
 
-          $saved_etag = $meta[$file_name].ETag
-          $saved_mod  = $meta[$file_name].LastModified
+          #$saved_etag = $meta[$file_name].ETag
+          #$saved_mod  = $meta[$file_name].LastModified
+
+           #start
+           $current_etag = ($response -split "`r`n" |
+           Where-Object { $_ -match "^ETag:" }).
+           Replace("ETag:", "").Trim().Trim('"')
+
+           $current_mod  = ($response -split "`r`n" |
+           Where-Object { $_ -match "^Last-Modified:" }).
+           Replace("Last-Modified:", "").Trim()
+
+           $saved_etag = $meta[$file_name].ETag.Trim().Trim('"')
+           $saved_mod  = $meta[$file_name].LastModified
+
+           # ---- DEBUG LOGGING ----
+           Write-Host "====================================================="
+           Write-Host "FILE:        $file_name"
+           Write-Host "URL:         $url"
+           Write-Host "Saved ETag:  '$saved_etag'"
+           Write-Host "Current ETag:'$current_etag'"
+           Write-Host "Match?       " -NoNewline
+           if ($current_etag -eq $saved_etag) {
+           Write-Host "YES (UNCHANGED)"
+           } else {
+           Write-Host "NO (CHANGED)"
+           }
+           Write-Host "====================================================="
+           #end
+
+
+
+
+
 
           # Compare for changes
           if ($current_etag -ne $saved_etag) {

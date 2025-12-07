@@ -163,7 +163,7 @@ jobs:
         }
 
         # Copy chapter.asset files
-        $pattern = Join-Path $workflow_root "rip_output\*\ExportedProject\Assets\MonoBehaviour\*.chapter.asset"
+        $pattern = Join-Path $workflow_root "rip_output\*\ExportedProject\Assets\MonoBehaviour\*.book.asset"
         Get-ChildItem -Path $pattern | ForEach-Object {
           Copy-Item $_.FullName -Destination $target_folder -Force
         }

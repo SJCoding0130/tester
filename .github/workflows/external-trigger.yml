@@ -163,7 +163,9 @@ jobs:
         $orderedMeta[$key] = $meta[$key]
         }
 
-        $orderedMeta | ConvertTo-Json -Depth 10 | Set-Content $meta_file
+        $newMetaPath = Join-Path $env:GITHUB_WORKSPACE "target-repo/generate/etag-data.json"
+        $orderedMeta | ConvertTo-Json -Depth 10 | Set-Content $newMetaPath
+
 
 
     # ==========================

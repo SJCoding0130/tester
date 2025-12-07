@@ -94,7 +94,7 @@ jobs:
           $saved_mod  = $meta[$file_name].LastModified
 
           # Compare for changes
-          if ($current_etag -ne $saved_etag -or $current_mod -ne $saved_mod) {
+          if ($current_etag -ne $saved_etag) {
             Write-Host "Downloading $file_name (file changed)"
             curl.exe -L $url -o (Split-Path $file_name -Leaf)
 

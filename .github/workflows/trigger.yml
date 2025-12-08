@@ -42,7 +42,7 @@ jobs:
     # ==========================
     - name: Run try.py
       run: |
-        python -u "try.py" "target.bin"
+        python -u "try.py"
     # ==========================
     # 5. Commit & push results
     # ==========================

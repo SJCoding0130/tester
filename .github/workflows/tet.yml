@@ -33,7 +33,7 @@ jobs:
           }
 
       # ==========================
-      # 3. Download assets in parallel
+      # 3. Download assets in parallel (PowerShell)
       # ==========================
       - name: Download chapter assets
         shell: pwsh
@@ -64,7 +64,7 @@ jobs:
           try {
               $json = Invoke-RestMethod -Uri $SOURCE_URL -TimeoutSec 30
           } catch {
-              Log "Failed to fetch JSON: $($_.Exception.Message)"
+              Log "Failed to fetch JSON: ${($_.Exception.Message)}"
               exit 1
           }
 
@@ -105,7 +105,7 @@ jobs:
                   $etag = $head.Headers.ETag
                   $lastMod = $head.Headers."Last-Modified"
               } catch {
-                  Log "HEAD request failed for $asset: $($_.Exception.Message)"
+                  Log "HEAD request failed for $asset: ${($_.Exception.Message)}"
                   return
               }
 
@@ -125,10 +125,10 @@ jobs:
                       'Last-Checked' = (Get-Date).ToString("o")
                   }
               } catch {
-                  Log "ERROR downloading $asset: $($_.Exception.Message)"
+                  Log "ERROR downloading $asset: ${($_.Exception.Message)}"
               }
 
-          } -ArgumentList $BASE_URL, $SAVE_DIR, $LOG_FILE, $syncMeta -ThrottleLimit 16  # Adjust concurrency here
+          } -ArgumentList $BASE_URL, $SAVE_DIR, $LOG_FILE, $syncMeta -ThrottleLimit 16
 
           # Save metadata
           $syncMeta.GetEnumerator() | ForEach-Object {

@@ -107,20 +107,20 @@ jobs:
                   $lastMod = $head.Headers."Last-Modified"
               } catch [System.Exception] {
                   $ex = $_
-                  Log "HEAD request failed for $asset: $($ex.Message)"
+                  Log "HEAD request failed for ${asset}: $($ex.Message)"
                   return
               }
 
               $prev = $syncMeta.GetOrAdd($asset, @{})
 
               if (($etag -and $prev.ETag -eq $etag) -or ($lastMod -and $prev.'Last-Modified' -eq $lastMod)) {
-                  Log "SKIPPED (no change): $asset"
+                  Log "SKIPPED (no change): ${asset}"
                   return
               }
 
               try {
                   Invoke-WebRequest -Uri $url -OutFile $savePath -UseBasicParsing -TimeoutSec 30
-                  Log "DOWNLOADED: $asset"
+                  Log "DOWNLOADED: ${asset}"
                   $syncMeta[$asset] = @{
                       ETag = $etag
                       'Last-Modified' = $lastMod
@@ -128,7 +128,7 @@ jobs:
                   }
               } catch [System.Exception] {
                   $ex = $_
-                  Log "ERROR downloading $asset: $($ex.Message)"
+                  Log "ERROR downloading ${asset}: $($ex.Message)"
               }
 
           } -ArgumentList $BASE_URL, $SAVE_DIR, $LOG_FILE, $syncMeta -ThrottleLimit 16

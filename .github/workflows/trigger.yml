@@ -49,12 +49,9 @@ jobs:
     - name: Push output to GitHub
       run: |
         git config user.name "github-actions[bot]"
-        git config user.email "github-actions[bot]@users.noreply.github.com"
-        git fetch origin
-        git reset --hard origin/main
-        
+        git config user.email "github-actions[bot]@users.noreply.github.com"       
         git add -A
         git commit -m "Auto-update output from workflow" || echo "No changes to commit"
-        git push
+        git push origin HEAD:main
       env:
         GITHUB_TOKEN: ${{ secrets.bla }}   # or ${{ secrets.GITHUB_TOKEN }}

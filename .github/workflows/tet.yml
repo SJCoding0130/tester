@@ -1,4 +1,4 @@
-name: Triggers
+name: Trigger
 on:
   workflow_dispatch:
 
@@ -63,8 +63,9 @@ jobs:
           # Fetch JSON
           try {
               $json = Invoke-RestMethod -Uri $SOURCE_URL -TimeoutSec 30
-          } catch {
-              Log "Failed to fetch JSON: ${($_.Exception.Message)}"
+          } catch [System.Exception] {
+              $ex = $_
+              Log "Failed to fetch JSON: $($ex.Message)"
               exit 1
           }
 
@@ -104,8 +105,9 @@ jobs:
                   $head = Invoke-WebRequest -Uri $url -Method Head -UseBasicParsing
                   $etag = $head.Headers.ETag
                   $lastMod = $head.Headers."Last-Modified"
-              } catch {
-                  Log "HEAD request failed for $asset: ${($_.Exception.Message)}"
+              } catch [System.Exception] {
+                  $ex = $_
+                  Log "HEAD request failed for $asset: $($ex.Message)"
                   return
               }
 
@@ -124,8 +126,9 @@ jobs:
                       'Last-Modified' = $lastMod
                       'Last-Checked' = (Get-Date).ToString("o")
                   }
-              } catch {
-                  Log "ERROR downloading $asset: ${($_.Exception.Message)}"
+              } catch [System.Exception] {
+                  $ex = $_
+                  Log "ERROR downloading $asset: $($ex.Message)"
               }
 
           } -ArgumentList $BASE_URL, $SAVE_DIR, $LOG_FILE, $syncMeta -ThrottleLimit 16

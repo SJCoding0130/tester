@@ -28,12 +28,12 @@ jobs:
     # ==========================
     - name: Restore asset metadata
       run: |
-        if exist asset_metadata.json (
-            echo "asset_metadata.json found."
-        ) else (
-            echo "{}" > asset_metadata.json
-            echo "Created empty asset_metadata.json"
-        )
+        if (Test-Path "asset_metadata.json") {
+        Write-Output "asset_metadata.json found."
+        } else {
+        "{}" | Out-File asset_metadata.json -Encoding utf8
+        Write-Output "Created empty asset_metadata.json"
+        }
 
     # ==========================
     # 2. Download main bin file

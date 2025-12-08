@@ -42,7 +42,7 @@ def extract_chapter_assets():
         response.raise_for_status()
         data = response.json()
     except Exception as e:
-        log(f"❌ Failed to fetch or parse JSON: {e}")
+        log(f" Failed to fetch or parse JSON: {e}")
         return []
 
     chapter_assets = []
@@ -58,7 +58,7 @@ def extract_chapter_assets():
                         chapter_assets.append(filename)
 
     chapter_assets = sorted(set(chapter_assets))
-    log(f"✅ Found {len(chapter_assets)} .chapter.asset files.")
+    log(f" Found {len(chapter_assets)} .chapter.asset files.")
     return chapter_assets
 
 # === STEP 2: Download assets with caching ===
@@ -72,9 +72,9 @@ def get_remote_headers(url):
                 "Last-Modified": response.headers.get("Last-Modified"),
             }
         else:
-            log(f"⚠️ HEAD {url} returned HTTP {response.status_code}")
+            log(f" HEAD {url} returned HTTP {response.status_code}")
     except Exception as e:
-        log(f"⚠️ HEAD request failed for {url}: {e}")
+        log(f" HEAD request failed for {url}: {e}")
     return {}
 
 def download_assets(assets):
@@ -96,7 +96,7 @@ def download_assets(assets):
             (etag and prev.get("ETag") == etag)
             or (last_mod and prev.get("Last-Modified") == last_mod)
         ):
-            log(f"⏩ SKIPPED (no change): {asset}")
+            log(f" SKIPPED (no change): {asset}")
             continue
 
         try:
@@ -104,16 +104,16 @@ def download_assets(assets):
             if response.status_code == 200:
                 with open(save_path, "wb") as f:
                     f.write(response.content)
-                log(f"✅ DOWNLOADED: {asset}")
+                log(f" DOWNLOADED: {asset}")
                 updated_metadata[asset] = {
                     "ETag": etag,
                     "Last-Modified": last_mod,
                     "Last-Checked": datetime.now().isoformat()
                 }
             else:
-                log(f"❌ FAILED: {asset} (HTTP {response.status_code})")
+                log(f" FAILED: {asset} (HTTP {response.status_code})")
         except Exception as e:
-            log(f"⚠️ ERROR downloading {asset}: {e}")
+            log(f" ERROR downloading {asset}: {e}")
 
     save_metadata(updated_metadata)
 
@@ -124,5 +124,6 @@ if __name__ == "__main__":
     if assets:
         download_assets(assets)
     else:
-        log("⚠️ No assets found, skipping download.")
+        log(" No assets found, skipping download.")
     log("=== Process finished ===")
+

@@ -1,155 +1,128 @@
-name: Trigger
-on:
-  workflow_dispatch:
+import os
+import requests
+import json
+from datetime import datetime
 
-jobs:
-  run-assets:
-    runs-on: windows-latest
+# === CONFIG ===
+SOURCE_URL = "https://api.housamo.xyz/housamo/unity/json/?file=/housamo/adv2024/Android/Android&mode=raw"
+BASE_URL = "https://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/"
+SAVE_DIR = "downloaded_assets"
 
-    permissions:
-      contents: write
+LOG_FILE = "chapter_asset_log.txt"
+META_FILE = "asset_metadata.json"
 
-    steps:
-      # ==========================
-      # 1. Checkout repo
-      # ==========================
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.bla }}
-          fetch-depth: 0
+os.makedirs(SAVE_DIR, exist_ok=True)
 
-      # ==========================
-      # 1.5 Restore asset_metadata.json
-      # ==========================
-      - name: Restore asset metadata
-        run: |
-          if (Test-Path "asset_metadata.json") {
-            Write-Output "asset_metadata.json found."
-          } else {
-            '{}' | Out-File asset_metadata.json -Encoding utf8
-            Write-Output "Created empty asset_metadata.json"
-          }
+# === UTILITIES ===
+def log(message: str):
+    """Append message to log file with timestamp."""
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    line = f"[{timestamp}] {message}"
+    print(line)
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(line + "\n")
 
-      # ==========================
-      # 2. Install jq (JSON parser)
-      # ==========================
-      - name: Install jq
-        run: |
-          choco install jq -y
+def load_metadata():
+    """Load saved metadata (ETag/Last-Modified info) from file."""
+    if os.path.exists(META_FILE):
+        with open(META_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return {}
 
-      # ==========================
-      # 3. Download assets in parallel
-      # ==========================
-      - name: Download chapter assets (parallel)
-        shell: pwsh
-        run: |
-          $SOURCE_URL = "https://api.housamo.xyz/housamo/unity/json/?file=/housamo/adv2024/Android/Android&mode=raw"
-          $BASE_URL   = "https://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/"
-          $SAVE_DIR   = "downloaded_assets"
-          $LOG_FILE   = "chapter_asset_log.txt"
-          $META_FILE  = "asset_metadata.json"
+def save_metadata(metadata):
+    """Save metadata to disk."""
+    with open(META_FILE, "w", encoding="utf-8") as f:
+        json.dump(metadata, f, indent=2)
 
-          New-Item -ItemType Directory -Path $SAVE_DIR -Force | Out-Null
+# === STEP 1: Extract chapter asset filenames ===
+def extract_chapter_assets():
+    log(f"Fetching JSON data from: {SOURCE_URL}")
+    try:
+        response = requests.get(SOURCE_URL, timeout=30)
+        response.raise_for_status()
+        data = response.json()
+    except Exception as e:
+        log(f" Failed to fetch or parse JSON: {e}")
+        return []
 
-          function Log($msg) {
-            $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-            $line = "[$timestamp] $msg"
-            Write-Output $line
-            Add-Content -Path $LOG_FILE -Value $line
-          }
+    chapter_assets = []
 
-          # Load metadata
-          if (Test-Path $META_FILE) {
-            $metadata = Get-Content $META_FILE -Raw | ConvertFrom-Json
-          } else {
-            $metadata = @{}
-          }
+    for entry in data:
+        if "AssetBundleNames" in entry:
+            for pair in entry["AssetBundleNames"]:
+                if isinstance(pair, list) and len(pair) == 2:
+                    asset_path = pair[1]
+                    if asset_path.endswith(".chapter.asset"):
+                        # Extract just the filename (e.g. "main1.chapter.asset")
+                        filename = os.path.basename(asset_path)
+                        chapter_assets.append(filename)
 
-          # Fetch JSON
-          try {
-            $json = Invoke-RestMethod -Uri $SOURCE_URL -TimeoutSec 30
-          } catch {
-            Log "Failed to fetch JSON: $($_.Exception.Message)"
-            exit 1
-          }
+    chapter_assets = sorted(set(chapter_assets))
+    log(f" Found {len(chapter_assets)} .chapter.asset files.")
+    return chapter_assets
 
-          # Extract .chapter.asset filenames
-          $assets = @()
-          foreach ($entry in $json) {
-            foreach ($pair in $entry.AssetBundleNames) {
-              if ($pair.Count -eq 2 -and $pair[1] -like "*.chapter.asset") {
-                $assets += [System.IO.Path]::GetFileName($pair[1])
-              }
+# === STEP 2: Download assets with caching ===
+def get_remote_headers(url):
+    """Get ETag and Last-Modified headers from the server."""
+    try:
+        response = requests.head(url, timeout=15)
+        if response.status_code == 200:
+            return {
+                "ETag": response.headers.get("ETag"),
+                "Last-Modified": response.headers.get("Last-Modified"),
             }
-          }
-          $assets = $assets | Sort-Object -Unique
-          Log "Found $($assets.Count) .chapter.asset files."
+        else:
+            log(f" HEAD {url} returned HTTP {response.status_code}")
+    except Exception as e:
+        log(f" HEAD request failed for {url}: {e}")
+    return {}
 
-          # Convert metadata to synchronized object for parallel access
-          $syncMeta = [System.Collections.Concurrent.ConcurrentDictionary[string,object]]::new()
-          foreach ($key in $metadata.Keys) {
-            $syncMeta[$key] = $metadata[$key]
-          }
+def download_assets(assets):
+    metadata = load_metadata()
+    updated_metadata = metadata.copy()
 
-          # Parallel download function
-          $assets | ForEach-Object -Parallel {
-            param($asset, $BASE_URL, $SAVE_DIR, $LOG_FILE, $syncMeta)
+    for asset in assets:
+        url = BASE_URL + asset
+        save_path = os.path.join(SAVE_DIR, asset)
 
-            function Log($msg) {
-              $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-              $line = "[$timestamp] $msg"
-              Write-Output $line
-              Add-Content -Path $LOG_FILE -Value $line
-            }
+        headers = get_remote_headers(url)
+        etag = headers.get("ETag")
+        last_mod = headers.get("Last-Modified")
 
-            $url = "$BASE_URL$asset"
-            $savePath = Join-Path $SAVE_DIR $asset
+        prev = metadata.get(asset, {})
 
-            try {
-              $head = Invoke-WebRequest -Uri $url -Method Head -UseBasicParsing
-              $etag = $head.Headers.ETag
-              $lastMod = $head.Headers."Last-Modified"
-            } catch {
-              Log "HEAD request failed for $asset: $($_.Exception.Message)"
-              return
-            }
+        # Skip if unchanged
+        if (
+            (etag and prev.get("ETag") == etag)
+            or (last_mod and prev.get("Last-Modified") == last_mod)
+        ):
+            log(f" SKIPPED (no change): {asset}")
+            continue
 
-            $prev = $syncMeta.GetOrAdd($asset, @{})
+        try:
+            response = requests.get(url, timeout=30)
+            if response.status_code == 200:
+                with open(save_path, "wb") as f:
+                    f.write(response.content)
+                log(f" DOWNLOADED: {asset}")
+                updated_metadata[asset] = {
+                    "ETag": etag,
+                    "Last-Modified": last_mod,
+                    "Last-Checked": datetime.now().isoformat()
+                }
+            else:
+                log(f" FAILED: {asset} (HTTP {response.status_code})")
+        except Exception as e:
+            log(f" ERROR downloading {asset}: {e}")
 
-            if (($etag -and $prev.ETag -eq $etag) -or ($lastMod -and $prev.'Last-Modified' -eq $lastMod)) {
-              Log "SKIPPED (no change): $asset"
-              return
-            }
+    save_metadata(updated_metadata)
 
-            try {
-              Invoke-WebRequest -Uri $url -OutFile $savePath -UseBasicParsing -TimeoutSec 30
-              Log "DOWNLOADED: $asset"
-              $syncMeta[$asset] = @{
-                ETag = $etag
-                'Last-Modified' = $lastMod
-                'Last-Checked' = (Get-Date).ToString("o")
-              }
-            } catch {
-              Log "ERROR downloading $asset: $($_.Exception.Message)"
-            }
-          } -ArgumentList $BASE_URL, $SAVE_DIR, $LOG_FILE, $syncMeta -ThrottleLimit 8
-
-          # Save metadata
-          $syncMeta.GetEnumerator() | ForEach-Object {
-            $metadata[$_.Key] = $_.Value
-          }
-          $metadata | ConvertTo-Json -Depth 3 | Set-Content $META_FILE
-
-      # ==========================
-      # 4. Commit & push results
-      # ==========================
-      - name: Push output to GitHub
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Auto-update output from workflow" || echo "No changes to commit"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.bla }}
+# === MAIN ===
+if __name__ == "__main__":
+    log("=== Process started ===")
+    assets = extract_chapter_assets()
+    if assets:
+        download_assets(assets)
+    else:
+        log(" No assets found, skipping download.")
+    log("=== Process finished ===")

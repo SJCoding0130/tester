@@ -1,0 +1,1127 @@
+{
+  "2ndanniversary.chapter.asset": {
+    "ETag": "\"8f60dc5b4d50a0fc61ec6e7579ecc9f7\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:37.831078"
+  },
+  "3rdanniversary.chapter.asset": {
+    "ETag": "\"0ef2d0da4fa8fdd18aaa97d0c0a342be\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:38.318078"
+  },
+  "4thanniversary.chapter.asset": {
+    "ETag": "\"55da737971f22557abec447381613769\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:39.550902"
+  },
+  "5thanniversary.chapter.asset": {
+    "ETag": "\"b9ec6ce9e57aeceb6335d9fe4866f978\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:40.658469"
+  },
+  "6thanniversary.chapter.asset": {
+    "ETag": "\"1e361c3b2fdbd9e681b877cb802a58c4\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:24 GMT",
+    "Last-Checked": "2025-12-08T13:18:41.987764"
+  },
+  "7thanniversary.chapter.asset": {
+    "ETag": "\"d1a86eec1a63d22a0fb4bdd432019ab5\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:24 GMT",
+    "Last-Checked": "2025-12-08T13:18:43.152898"
+  },
+  "8thanniversary.chapter.asset": {
+    "ETag": "\"1fae24c2ed2fedfb6ebf72aca5d4459f\"",
+    "Last-Modified": "Fri, 13 Dec 2024 07:34:54 GMT",
+    "Last-Checked": "2025-12-08T13:18:43.654067"
+  },
+  "9thanniversary.chapter.asset": {
+    "ETag": "\"c5fdff7ee78554bb101f1afde2fffc14\"",
+    "Last-Modified": "Fri, 28 Nov 2025 08:40:37 GMT",
+    "Last-Checked": "2025-12-08T13:18:44.143138"
+  },
+  "aegir.chapter.asset": {
+    "ETag": "\"1df93d50149df564d045807f7a7b2aca\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:45.238499"
+  },
+  "agf2023.chapter.asset": {
+    "ETag": "\"31c847399fa21f6f409ea9d563c2f202\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:46.584049"
+  },
+  "agf2024.chapter.asset": {
+    "ETag": "\"f5bce008c8c7deb3ef992686deb35784\"",
+    "Last-Modified": "Wed, 06 Nov 2024 07:49:43 GMT",
+    "Last-Checked": "2025-12-08T13:18:47.703586"
+  },
+  "agf2025.chapter.asset": {
+    "ETag": "\"23d7157c501214ef092f9f300bbc1fbf\"",
+    "Last-Modified": "Tue, 11 Nov 2025 05:51:27 GMT",
+    "Last-Checked": "2025-12-08T13:18:48.821425"
+  },
+  "agyou.chapter.asset": {
+    "ETag": "\"5cceaac77987f6d93cb8809a42d59ed6\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:49.658461"
+  },
+  "ahab.chapter.asset": {
+    "ETag": "\"afa92bc6a05376c4a5c4494564fb95f0\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:50.259084"
+  },
+  "akibaanddragons2022.chapter.asset": {
+    "ETag": "\"5a19386499125429d4d6e5fcc6166dd8\"",
+    "Last-Modified": "Tue, 26 Aug 2025 05:11:16 GMT",
+    "Last-Checked": "2025-12-08T13:18:52.055275"
+  },
+  "akihagongen.chapter.asset": {
+    "ETag": "\"29152e48054d42e9e1924f9683705d22\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:53.041133"
+  },
+  "algernon.chapter.asset": {
+    "ETag": "\"8ce0b4fc994ffa7ea2122e1f120ed4cc\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:54.146231"
+  },
+  "alice.chapter.asset": {
+    "ETag": "\"ccbd9b5ad1c45802a990bf727271a63b\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:55.227376"
+  },
+  "amatumara.chapter.asset": {
+    "ETag": "\"118113fe4328bc383048f697bcfe84af\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:56.368214"
+  },
+  "andvarafors2019.chapter.asset": {
+    "ETag": "\"a67a35f35b24946f44ba24ec212fd090\"",
+    "Last-Modified": "Tue, 18 Feb 2025 05:47:01 GMT",
+    "Last-Checked": "2025-12-08T13:18:56.882688"
+  },
+  "andvari.chapter.asset": {
+    "ETag": "\"6be567ce65bb3c61258a78e9b96e454f\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:57.982990"
+  },
+  "aracne.chapter.asset": {
+    "ETag": "\"dfe668429578e6423356017b9c8749c9\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:18:59.088368"
+  },
+  "arc.chapter.asset": {
+    "ETag": "\"9ef608faf391b16ef23519f57c55946a\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:19:00.104045"
+  },
+  "arslan.chapter.asset": {
+    "ETag": "\"c28069f3446f1d95171cb3796571ef01\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:19:01.171947"
+  },
+  "ashigara.chapter.asset": {
+    "ETag": "\"6faf66ea69d1a0761971a3713f55ffad\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:19:02.262580"
+  },
+  "asterius.chapter.asset": {
+    "ETag": "\"51c7617d862859be12aa6e4201cc16d6\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:19:03.242284"
+  },
+  "autumncampaign2022.chapter.asset": {
+    "ETag": "\"c423af215a210042a79156c599add8e8\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:19:04.367780"
+  },
+  "babebunyan.chapter.asset": {
+    "ETag": "\"25bb7fbc38b94b720aa264ef3d03dae3\"",
+    "Last-Modified": "Wed, 03 Sep 2025 05:32:40 GMT",
+    "Last-Checked": "2025-12-08T13:19:05.696651"
+  },
+  "bathym.chapter.asset": {
+    "ETag": "\"8dea624fc8a8133dc47fa4d1a9e8e0ea\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:19:06.900204"
+  },
+  "benten.chapter.asset": {
+    "ETag": "\"19e3592b55da64f94c66e6e0b3e37e1f\"",
+    "Last-Modified": "Tue, 16 Sep 2025 07:51:55 GMT",
+    "Last-Checked": "2025-12-08T13:19:08.041091"
+  },
+  "breke.chapter.asset": {
+    "ETag": "\"1d33eb3c537b34b39826154d1f14a738\"",
+    "Last-Modified": "Wed, 30 Apr 2025 05:09:00 GMT",
+    "Last-Checked": "2025-12-08T13:19:08.527646"
+  },
+  "caitsith.chapter.asset": {
+    "ETag": "\"a7df67b0ef603459e9a8786553b371c7\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:19:09.857965"
+  },
+  "canaan2019.chapter.asset": {
+    "ETag": "\"747a9f55487339debba0d7dd0d620734\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:19:11.411948"
+  },
+  "catfestival2020.chapter.asset": {
+    "ETag": "\"45fa92993f802fc6c81d649f69493f23\"",
+    "Last-Modified": "Fri, 02 May 2025 07:31:16 GMT",
+    "Last-Checked": "2025-12-08T13:19:12.933688"
+  },
+  "catoblepas.chapter.asset": {
+    "ETag": "\"0bc26f84138d528c039b7a5be0470613\"",
+    "Last-Modified": "Wed, 10 Sep 2025 08:56:08 GMT",
+    "Last-Checked": "2025-12-08T13:19:14.042086"
+  },
+  "chernobog.chapter.asset": {
+    "ETag": "\"cc2cdf08432ba53108fcf23695ca7523\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:19:15.146637"
+  },
+  "christine.chapter.asset": {
+    "ETag": "\"dc4c127a06c5a81940474adb2664dc73\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:19:16.215729"
+  },
+  "claude.chapter.asset": {
+    "ETag": "\"15e7dcd4049d250c824379f56cd4ba18\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:25 GMT",
+    "Last-Checked": "2025-12-08T13:19:17.085858"
+  },
+  "common.chapter.asset": {
+    "ETag": "\"00cfee99e1ad60e5de1ab427c10d913d\"",
+    "Last-Modified": "Fri, 05 Dec 2025 08:58:40 GMT",
+    "Last-Checked": "2025-12-08T13:19:17.577087"
+  },
+  "cthugha.chapter.asset": {
+    "ETag": "\"8bd7c0c751ff88a48f3193eaf9aea769\"",
+    "Last-Modified": "Fri, 25 Apr 2025 06:56:59 GMT",
+    "Last-Checked": "2025-12-08T13:19:18.098183"
+  },
+  "dagon.chapter.asset": {
+    "ETag": "\"addcdcbbba7169659af7b09c8fcdcdee\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:19.224303"
+  },
+  "dancingsat2024.chapter.asset": {
+    "ETag": "\"30932da24d285a3047d90728f2216a2b\"",
+    "Last-Modified": "Fri, 15 Nov 2024 08:37:09 GMT",
+    "Last-Checked": "2025-12-08T13:19:20.585152"
+  },
+  "ded.chapter.asset": {
+    "ETag": "\"0930a327d0583caf8466229640cfa802\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:21.919233"
+  },
+  "dg01.chapter.asset": {
+    "ETag": "\"2de53bf35f58d05e88ff29a3cd0fac4b\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:22.408155"
+  },
+  "dg02.chapter.asset": {
+    "ETag": "\"039b6b0d94eaf8192c86a470bdc095fb\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:23.634112"
+  },
+  "dg03.chapter.asset": {
+    "ETag": "\"4bba6cdf8dab0c4a53c2395624206f33\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:25.184956"
+  },
+  "dg04.chapter.asset": {
+    "ETag": "\"2b758185f8acf4f2ae5e65b1a5cacbea\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:26.497537"
+  },
+  "durga.chapter.asset": {
+    "ETag": "\"965cd5b4a310cc8e79aa21b10bda01e5\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:27.837357"
+  },
+  "echo.chapter.asset": {
+    "ETag": "\"4a05d13c13f415a50a1271038767fa16\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:28.819069"
+  },
+  "eita.chapter.asset": {
+    "ETag": "\"0a38645ae6938bc26679b5eabd603e9e\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:29.807277"
+  },
+  "ellie.chapter.asset": {
+    "ETag": "\"b7367777a5e9145cab136f9db1b6fbbf\"",
+    "Last-Modified": "Fri, 24 Oct 2025 05:44:14 GMT",
+    "Last-Checked": "2025-12-08T13:19:30.917961"
+  },
+  "fashionista2019.chapter.asset": {
+    "ETag": "\"39f591e3a1e2498b8fd65c1e5ba0d937\"",
+    "Last-Modified": "Tue, 18 Feb 2025 05:47:01 GMT",
+    "Last-Checked": "2025-12-08T13:19:32.467588"
+  },
+  "fenrir.chapter.asset": {
+    "ETag": "\"cd4a49ab31d357c70ca470dbac37c500\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:33.829180"
+  },
+  "festival2018.chapter.asset": {
+    "ETag": "\"4473b88ee92ebda6483a3a0609366819\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:35.276631"
+  },
+  "fkare2.chapter.asset": {
+    "ETag": "\"530a1f76dc43d7d0d714ea210fa19010\"",
+    "Last-Modified": "Tue, 16 Sep 2025 07:51:54 GMT",
+    "Last-Checked": "2025-12-08T13:19:36.620098"
+  },
+  "fkare2020.chapter.asset": {
+    "ETag": "\"36965338b2cd18a61c501ff6857b7699\"",
+    "Last-Modified": "Tue, 16 Sep 2025 07:51:55 GMT",
+    "Last-Checked": "2025-12-08T13:19:38.080368"
+  },
+  "furufumi.chapter.asset": {
+    "ETag": "\"eb2a69e669ec6fcb56e9b267f830db4b\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:39.202596"
+  },
+  "gabriel.chapter.asset": {
+    "ETag": "\"07bfb0ccd14784c1406f07b7b8cb0650\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:40.211028"
+  },
+  "gandharva.chapter.asset": {
+    "ETag": "\"538eaf74b46d13a7b3d827a3a04b353d\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:41.218465"
+  },
+  "garmr.chapter.asset": {
+    "ETag": "\"ca31521843c634e1e614f2156e09dd55\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:42.206158"
+  },
+  "gendarme2018.chapter.asset": {
+    "ETag": "\"efa817c8b714752300f0f034aecc74b8\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:43.878723"
+  },
+  "girimekra.chapter.asset": {
+    "ETag": "\"564c8166c113d98358234c02d2a62f5f\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:44.984413"
+  },
+  "gorozaemon.chapter.asset": {
+    "ETag": "\"09e31faca7f7712a5a830fe570f38d72\"",
+    "Last-Modified": "Fri, 18 Jul 2025 06:27:08 GMT",
+    "Last-Checked": "2025-12-08T13:19:45.483505"
+  },
+  "gouryou.chapter.asset": {
+    "ETag": "\"7263830431b31b8b572b019bfc91ca0a\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:46.571098"
+  },
+  "gullinbursti.chapter.asset": {
+    "ETag": "\"121f71c76ee76866122f7f2156cc4d7c\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:47.672026"
+  },
+  "gunzou.chapter.asset": {
+    "ETag": "\"fb6e9470a14a2dd4300a78aeef265eb2\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:48.166568"
+  },
+  "gw2017.chapter.asset": {
+    "ETag": "\"6c289751437ce1b19102286a3f284064\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:49.011112"
+  },
+  "gw2022.chapter.asset": {
+    "ETag": "\"ec066bac9c60173c10bea37365b300ff\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:50.127098"
+  },
+  "gyoubu.chapter.asset": {
+    "ETag": "\"a1c1015e17c99a5450d9170f7d46d106\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:51.109226"
+  },
+  "gyuumaou.chapter.asset": {
+    "ETag": "\"92c289bd86625b3d494aeb1272a766d5\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:51.588548"
+  },
+  "hakumen.chapter.asset": {
+    "ETag": "\"9af0d0842a2c47df4442c68410b625ac\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:52.695640"
+  },
+  "halloween2017.chapter.asset": {
+    "ETag": "\"33259eef968de60574175f8ad9c33f52\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:54.146979"
+  },
+  "halloweenpolice2021.chapter.asset": {
+    "ETag": "\"bfadac9c6473d700f9b3f25bf754cd6f\"",
+    "Last-Modified": "Fri, 21 Nov 2025 06:42:17 GMT",
+    "Last-Checked": "2025-12-08T13:19:55.717394"
+  },
+  "hanuman.chapter.asset": {
+    "ETag": "\"31a1f25b05d5d5b265a867a3d72a901c\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:56.951290"
+  },
+  "harlot.chapter.asset": {
+    "ETag": "\"de21131a67541038382719652cfbd6ed\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:19:57.947257"
+  },
+  "hekate.chapter.asset": {
+    "ETag": "\"fc66cb209361b2499d492cbd6e035376\"",
+    "Last-Modified": "Wed, 23 Apr 2025 06:56:46 GMT",
+    "Last-Checked": "2025-12-08T13:19:59.030680"
+  },
+  "hephaestus.chapter.asset": {
+    "ETag": "\"51f0634c0cdeb471747571ab8ade3cf6\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:00.139774"
+  },
+  "horkeukamui.chapter.asset": {
+    "ETag": "\"2808090b792c483d93401a586a8e9573\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:00.649364"
+  },
+  "hotparadise2021.chapter.asset": {
+    "ETag": "\"275fc5608feb3060c5ebd6328b42d27f\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:02.260800"
+  },
+  "hougen.chapter.asset": {
+    "ETag": "\"2fab2de403f19a0f3e16f98699872257\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:03.513990"
+  },
+  "ifrit.chapter.asset": {
+    "ETag": "\"229797f52a353a4d5a0d088e07f2c24c\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:04.610328"
+  },
+  "ikutoshi.chapter.asset": {
+    "ETag": "\"3ca5530c3e2ef5b4b09ad43822d828b8\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:05.648863"
+  },
+  "island2017.chapter.asset": {
+    "ETag": "\"413ed00bdb63b3b59a617fc6e3fe7e0b\"",
+    "Last-Modified": "Fri, 11 Apr 2025 05:10:23 GMT",
+    "Last-Checked": "2025-12-08T13:20:07.110434"
+  },
+  "jamboree2020.chapter.asset": {
+    "ETag": "\"e727272d6cea4167c8897af15fb71196\"",
+    "Last-Modified": "Wed, 15 Jan 2025 06:52:04 GMT",
+    "Last-Checked": "2025-12-08T13:20:08.661590"
+  },
+  "jiangshinight2019.chapter.asset": {
+    "ETag": "\"22534e3563d6d83b62f07f9857d48733\"",
+    "Last-Modified": "Tue, 18 Feb 2025 05:47:01 GMT",
+    "Last-Checked": "2025-12-08T13:20:10.451461"
+  },
+  "jinn.chapter.asset": {
+    "ETag": "\"4a2fd4caa7571db7ea99f75f99f7f838\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:10.954509"
+  },
+  "jormungandr.chapter.asset": {
+    "ETag": "\"342be94354f111cde5a4361e80b1b153\"",
+    "Last-Modified": "Wed, 23 Jul 2025 07:34:03 GMT",
+    "Last-Checked": "2025-12-08T13:20:12.093062"
+  },
+  "joul.chapter.asset": {
+    "ETag": "\"c1722de1a92bd455e9c82ec659413b0e\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:13.180358"
+  },
+  "journey2018.chapter.asset": {
+    "ETag": "\"7992aa52ce472e2dd93f3e973f151c4a\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:14.953804"
+  },
+  "jurassicsummer2023.chapter.asset": {
+    "ETag": "\"3536a7ee1783c64022ddd128432d6847\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:16.418909"
+  },
+  "kaiyou2017.chapter.asset": {
+    "ETag": "\"b8bc74edb169819ff37eaf12b8ee0f9d\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:17.301080"
+  },
+  "kalki.chapter.asset": {
+    "ETag": "\"cbe915ab09363698528896840f205320\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:18.547082"
+  },
+  "kengo.chapter.asset": {
+    "ETag": "\"e58be1713d52d430654861870114102f\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:19.050721"
+  },
+  "kijimuna.chapter.asset": {
+    "ETag": "\"4d21699fe0c9e415f409bce844db9c28\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:20.127651"
+  },
+  "kimunkamui.chapter.asset": {
+    "ETag": "\"1480cd65e194d287ece295a8496a93d0\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:21.223352"
+  },
+  "krampus.chapter.asset": {
+    "ETag": "\"7e54816dfbb8020104f7f22609bc7392\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:22.331934"
+  },
+  "kresnik.chapter.asset": {
+    "ETag": "\"28ead03bf12eec6e6342ceca6a0d8e3a\"",
+    "Last-Modified": "Fri, 24 Oct 2025 05:44:14 GMT",
+    "Last-Checked": "2025-12-08T13:20:23.434426"
+  },
+  "kurogane.chapter.asset": {
+    "ETag": "\"31e8c668800ea63b4db82b1a92c18b03\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:23.931541"
+  },
+  "kyuuma.chapter.asset": {
+    "ETag": "\"01451d6dba07ef70c6514f0897d08a6d\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:24.983913"
+  },
+  "leib.chapter.asset": {
+    "ETag": "\"1a66892fee9a9de767febcc800e4ad64\"",
+    "Last-Modified": "Fri, 18 Apr 2025 06:03:55 GMT",
+    "Last-Checked": "2025-12-08T13:20:26.081359"
+  },
+  "lesson.chapter.asset": {
+    "ETag": "\"5514b36cc6d33a9d5372178c0fa7ddce\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:26.556713"
+  },
+  "licho.chapter.asset": {
+    "ETag": "\"14d53950d6675e6fb241f8cca816f0fb\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:27.675801"
+  },
+  "licht.chapter.asset": {
+    "ETag": "\"251db771bc283ca29e72a1032b83ab93\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:28.657585"
+  },
+  "lucifuge.chapter.asset": {
+    "ETag": "\"8f6fbc038fa8fd91142630dff3c65aea\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:29.860594"
+  },
+  "magan.chapter.asset": {
+    "ETag": "\"8012a83bb3c27218fe113bbd4ca03055\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:30.948558"
+  },
+  "main1.chapter.asset": {
+    "ETag": "\"13909858e3b18e49aec13c32aafdd980\"",
+    "Last-Modified": "Fri, 28 Feb 2025 06:24:16 GMT",
+    "Last-Checked": "2025-12-08T13:20:31.443063"
+  },
+  "main10.chapter.asset": {
+    "ETag": "\"5edfbdc340443507fa1e6913c72e98f9\"",
+    "Last-Modified": "Tue, 18 Feb 2025 05:47:01 GMT",
+    "Last-Checked": "2025-12-08T13:20:31.950080"
+  },
+  "main11.chapter.asset": {
+    "ETag": "\"bf45edb020ec07b2beb9af107a60ce74\"",
+    "Last-Modified": "Tue, 18 Feb 2025 05:47:01 GMT",
+    "Last-Checked": "2025-12-08T13:20:32.462566"
+  },
+  "main12.chapter.asset": {
+    "ETag": "\"670364febd7d30d14a06571e77694629\"",
+    "Last-Modified": "Tue, 18 Feb 2025 05:47:01 GMT",
+    "Last-Checked": "2025-12-08T13:20:32.956809"
+  },
+  "main13.chapter.asset": {
+    "ETag": "\"5a8809f35c6cfbca2b7059e9954d3575\"",
+    "Last-Modified": "Tue, 08 Jul 2025 05:24:30 GMT",
+    "Last-Checked": "2025-12-08T13:20:34.502077"
+  },
+  "main14.chapter.asset": {
+    "ETag": "\"9c446b51a0bc8715f8185a94246885d5\"",
+    "Last-Modified": "Fri, 13 Dec 2024 07:34:54 GMT",
+    "Last-Checked": "2025-12-08T13:20:36.063201"
+  },
+  "main15.chapter.asset": {
+    "ETag": "\"659fa2a5f6cf2840dedc56c55c550a61\"",
+    "Last-Modified": "Tue, 13 May 2025 09:04:20 GMT",
+    "Last-Checked": "2025-12-08T13:20:36.577640"
+  },
+  "main16.chapter.asset": {
+    "ETag": "\"e75dd2f91d802b3c249ed849d851fc54\"",
+    "Last-Modified": "Wed, 26 Nov 2025 08:16:00 GMT",
+    "Last-Checked": "2025-12-08T13:20:37.430368"
+  },
+  "main2.chapter.asset": {
+    "ETag": "\"bafa69e904c2786c63dc1edbe80abc52\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:37.916561"
+  },
+  "main3.chapter.asset": {
+    "ETag": "\"fdfd2136a2f1a707608bccebd04c36f8\"",
+    "Last-Modified": "Tue, 16 Sep 2025 07:51:54 GMT",
+    "Last-Checked": "2025-12-08T13:20:38.413595"
+  },
+  "main4.chapter.asset": {
+    "ETag": "\"00ac2c69a18b1e780a8e7d13070ce029\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:39.648011"
+  },
+  "main5.chapter.asset": {
+    "ETag": "\"0189ec78d1118482e5d7abc82a99b9f6\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:41.110971"
+  },
+  "main6.chapter.asset": {
+    "ETag": "\"b0e88ef3c6d70409bddaa4ccf0d90068\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:26 GMT",
+    "Last-Checked": "2025-12-08T13:20:42.669317"
+  },
+  "main7.chapter.asset": {
+    "ETag": "\"6bb763d0c4b053df925bd63364e4fea5\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:43.159824"
+  },
+  "main8.chapter.asset": {
+    "ETag": "\"00033e37d2bd65582a387248f54f92e5\"",
+    "Last-Modified": "Tue, 18 Feb 2025 05:47:01 GMT",
+    "Last-Checked": "2025-12-08T13:20:43.671278"
+  },
+  "main9.chapter.asset": {
+    "ETag": "\"0907d08b6d3d3545192ff739f94ea9a2\"",
+    "Last-Modified": "Tue, 18 Feb 2025 05:47:01 GMT",
+    "Last-Checked": "2025-12-08T13:20:45.275037"
+  },
+  "makara.chapter.asset": {
+    "ETag": "\"de37425ab953b5775aa02fbc12055136\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:46.256648"
+  },
+  "managarmr.chapter.asset": {
+    "ETag": "\"07166db1837029a78bf04e2c65b4a43f\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:47.363331"
+  },
+  "maria.chapter.asset": {
+    "ETag": "\"5c61fa7d71f20ebd2efb3e3523c698bf\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:48.393396"
+  },
+  "marineresort2023.chapter.asset": {
+    "ETag": "\"d9b551a63f475092b817ec2eddfd9d87\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:49.835891"
+  },
+  "melusine.chapter.asset": {
+    "ETag": "\"94d46f1f8dd391634c92caa551003519\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:50.935461"
+  },
+  "moritaka.chapter.asset": {
+    "ETag": "\"526fc22abc01b7d91b1cfa122cdae3d7\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:52.028982"
+  },
+  "motosumi.chapter.asset": {
+    "ETag": "\"0dd1be84cf1e58368a60593274782725\"",
+    "Last-Modified": "Fri, 31 Jan 2025 05:59:04 GMT",
+    "Last-Checked": "2025-12-08T13:20:52.901317"
+  },
+  "mountain2024.chapter.asset": {
+    "ETag": "\"7470f54510a47e70438681a38b031746\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:54.049711"
+  },
+  "movietest.chapter.asset": {
+    "ETag": "\"fd524cafcea9bc90903d995d428aef03\"",
+    "Last-Modified": "Fri, 16 May 2025 05:27:38 GMT",
+    "Last-Checked": "2025-12-08T13:20:55.057780"
+  },
+  "musashi.chapter.asset": {
+    "ETag": "\"48d2c67e5b3e53caa8f5e40bbb38fbcf\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:56.113026"
+  },
+  "newyear2017.chapter.asset": {
+    "ETag": "\"0a789cef1dea432a1449fadca43fdae8\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:56.951608"
+  },
+  "newyear2018.chapter.asset": {
+    "ETag": "\"40aeb53256e1e9c67e731ef84a89548e\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:58.178384"
+  },
+  "newyear2019.chapter.asset": {
+    "ETag": "\"b5b5ba3bdf0551cc38aa9f569830f1dc\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:20:59.540194"
+  },
+  "newyear2020.chapter.asset": {
+    "ETag": "\"7642f0faf6dfa122b6662ce2bbf5626d\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:00.805673"
+  },
+  "newyear2021.chapter.asset": {
+    "ETag": "\"836548bad16be72d3614d5d6cf0155fb\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:01.707912"
+  },
+  "newyear2022.chapter.asset": {
+    "ETag": "\"6c22f7687cf20cbf2184091f468a62a2\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:03.088348"
+  },
+  "newyear2023.chapter.asset": {
+    "ETag": "\"8105416369e07210340d28f4b4a455ac\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:04.457754"
+  },
+  "newyear2024.chapter.asset": {
+    "ETag": "\"a7613fb021b0803f9ea39b9456667342\"",
+    "Last-Modified": "Fri, 27 Dec 2024 07:07:00 GMT",
+    "Last-Checked": "2025-12-08T13:21:06.158820"
+  },
+  "newyear2025.chapter.asset": {
+    "ETag": "\"cd6e05c81d5905997df0d52232d16792\"",
+    "Last-Modified": "Wed, 15 Jan 2025 06:52:04 GMT",
+    "Last-Checked": "2025-12-08T13:21:07.405286"
+  },
+  "nightfestival2022.chapter.asset": {
+    "ETag": "\"72a05e7853727c49153f91b90b594cd1\"",
+    "Last-Modified": "Fri, 24 Oct 2025 05:44:14 GMT",
+    "Last-Checked": "2025-12-08T13:21:07.890941"
+  },
+  "nightglows2021.chapter.asset": {
+    "ETag": "\"344739677fb82f8acb2ed73dc2157872\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:08.393516"
+  },
+  "nightmare2019.chapter.asset": {
+    "ETag": "\"14f60d31dfb72c7388181678c8f23ed4\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:09.954056"
+  },
+  "nobuharu.chapter.asset": {
+    "ETag": "\"d3df052f9fb86f6bb0da48f9f71a2395\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:10.452161"
+  },
+  "nomad.chapter.asset": {
+    "ETag": "\"5abb4f7ffe709dd7787e2836c40a07da\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:11.408953"
+  },
+  "odyssey2025.chapter.asset": {
+    "ETag": "\"1c421deccfc64b16148bab85be5fd4c6\"",
+    "Last-Modified": "Tue, 19 Aug 2025 05:56:14 GMT",
+    "Last-Checked": "2025-12-08T13:21:13.137533"
+  },
+  "oguchimagami.chapter.asset": {
+    "ETag": "\"b4fe9728695f17c00a3149b9030895b9\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:14.232482"
+  },
+  "oniwaka.chapter.asset": {
+    "ETag": "\"195b91a41a4880626c3fdcd852d826f4\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:15.326919"
+  },
+  "onsen2017.chapter.asset": {
+    "ETag": "\"e39420658ce2b16f4a3cd89c1c04e172\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:16.881658"
+  },
+  "ophion.chapter.asset": {
+    "ETag": "\"aebecd0f444dedd7b1886ff3273851e6\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:17.390602"
+  },
+  "otohime.chapter.asset": {
+    "ETag": "\"0749d9bb17f8e69c8113f0eb6f9add00\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:18.497168"
+  },
+  "player.chapter.asset": {
+    "ETag": "\"dd70c650c14d3722d5712c73fdab9382\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:19.455763"
+  },
+  "pollux.chapter.asset": {
+    "ETag": "\"cad0ffc5c72017b487b4e3184951dec0\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:20.429465"
+  },
+  "riku.chapter.asset": {
+    "ETag": "\"3e88543977cd9b63dee153d35e21a1c3\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:21.752118"
+  },
+  "rinkai.chapter.asset": {
+    "ETag": "\"3e065ee5019584c090eefbf7ed6f2572\"",
+    "Last-Modified": "Tue, 22 Oct 2024 05:37:15 GMT",
+    "Last-Checked": "2025-12-08T13:21:22.261373"
+  },
+  "robinson.chapter.asset": {
+    "ETag": "\"a8f173a6ae6262074d7dba52bf54293e\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:23.594000"
+  },
+  "ryouta.chapter.asset": {
+    "ETag": "\"0c9bb22464dd0f2d94794043998ff884\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:24.924439"
+  },
+  "sarutahiko.chapter.asset": {
+    "ETag": "\"f265d74455349bbac08201a65a29b04e\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:26.008176"
+  },
+  "seth.chapter.asset": {
+    "ETag": "\"6514b1146853251837d533c6e8a90e47\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:26.969484"
+  },
+  "setsubun2019.chapter.asset": {
+    "ETag": "\"4e75712c940f5cfafa6416bd278ba895\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:28.407160"
+  },
+  "shennong.chapter.asset": {
+    "ETag": "\"ef396904f406cf84b2a6f05bc5e5b4fd\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:29.746424"
+  },
+  "shino.chapter.asset": {
+    "ETag": "\"4713c6ca54d7d797bc8b481a0cea1c19\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:30.710835"
+  },
+  "shinya.chapter.asset": {
+    "ETag": "\"2ae6de92bcc4525b82e0a3287388f5df\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:31.932885"
+  },
+  "shirou.chapter.asset": {
+    "ETag": "\"c3568dbc623dc52160a23be72cdf697b\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:32.417983"
+  },
+  "shiva.chapter.asset": {
+    "ETag": "\"04aea3e94d4f507a544b545c41fb20bb\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:33.512943"
+  },
+  "shuten.chapter.asset": {
+    "ETag": "\"0fbf4f4ed9026bf47e7bcd4f50e09576\"",
+    "Last-Modified": "Wed, 16 Apr 2025 05:12:13 GMT",
+    "Last-Checked": "2025-12-08T13:21:34.360805"
+  },
+  "sitri.chapter.asset": {
+    "ETag": "\"284b76787786d8809206c2051d830262\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:35.438894"
+  },
+  "snow.chapter.asset": {
+    "ETag": "\"374efba16bf1bda920842cf10e43b42a\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:27 GMT",
+    "Last-Checked": "2025-12-08T13:21:36.521270"
+  },
+  "sportsfes2025.chapter.asset": {
+    "ETag": "\"7a62c4424bb381265097b357abdcbdc1\"",
+    "Last-Modified": "Tue, 01 Jul 2025 08:20:17 GMT",
+    "Last-Checked": "2025-12-08T13:21:37.980818"
+  },
+  "springcampaign2023.chapter.asset": {
+    "ETag": "\"d885858a1556dfbc0aa0d50c907a457a\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:38.492437"
+  },
+  "summerhost2024.chapter.asset": {
+    "ETag": "\"35ece398cf0ccf36e0d27a0dd788f160\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:39.515877"
+  },
+  "summerpool2022.chapter.asset": {
+    "ETag": "\"2c178f51ac5a78d21e61a7c4ecdaffa9\"",
+    "Last-Modified": "Tue, 08 Jul 2025 05:24:30 GMT",
+    "Last-Checked": "2025-12-08T13:21:41.063266"
+  },
+  "summerriver2021.chapter.asset": {
+    "ETag": "\"e3c81e3ec48115b1863be8e24e175fc7\"",
+    "Last-Modified": "Tue, 18 Feb 2025 05:47:02 GMT",
+    "Last-Checked": "2025-12-08T13:21:42.618764"
+  },
+  "surtr.chapter.asset": {
+    "ETag": "\"d363704f445f3818266513cdab069ad1\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:43.936286"
+  },
+  "tadatomo.chapter.asset": {
+    "ETag": "\"0adf87710ee33d53e64f78917193645b\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:44.995258"
+  },
+  "tadikarao.chapter.asset": {
+    "ETag": "\"605e74522c22678354e7890a154b9292\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:46.103453"
+  },
+  "takeminakata.chapter.asset": {
+    "ETag": "\"11eda6b8b23b8494c3bb7bbe7eaf618c\"",
+    "Last-Modified": "Fri, 31 Jan 2025 05:59:05 GMT",
+    "Last-Checked": "2025-12-08T13:21:47.224232"
+  },
+  "tangaroa.chapter.asset": {
+    "ETag": "\"3e9c9284ca25a7a227b2984a3aab429f\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:48.512038"
+  },
+  "taromaiti.chapter.asset": {
+    "ETag": "\"45e769958f71ad7bfadb0d8e9bb3a9d3\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:49.518945"
+  },
+  "taurus.chapter.asset": {
+    "ETag": "\"ed3a5dea28ec836d8cd975943dc7c37f\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:50.522203"
+  },
+  "temujin.chapter.asset": {
+    "ETag": "\"1c78fa485e0e23dbab4ddfd85d93eb6a\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:51.525124"
+  },
+  "testevent2021.chapter.asset": {
+    "ETag": "\"5d867f3fc63695241e39bed39b74ce33\"",
+    "Last-Modified": "Wed, 03 Sep 2025 05:32:40 GMT",
+    "Last-Checked": "2025-12-08T13:21:52.505269"
+  },
+  "tetsugyu.chapter.asset": {
+    "ETag": "\"b6829f06b4d5a34667fafdf1f567b1db\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:53.582005"
+  },
+  "tetsuya.chapter.asset": {
+    "ETag": "\"30bde681483a211480a328907808dcb0\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:54.678498"
+  },
+  "tezcatlipoca.chapter.asset": {
+    "ETag": "\"4acf1cad04a0980b21527111add4c9ae\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:55.684097"
+  },
+  "thehero.chapter.asset": {
+    "ETag": "\"4b39e79be6437b774ae256180d0f4479\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:56.654388"
+  },
+  "tindalos.chapter.asset": {
+    "ETag": "\"70121b8357e78c69a50ccd8ba9c04cc5\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:57.775948"
+  },
+  "touji.chapter.asset": {
+    "ETag": "\"f55be06c4f19b9b90368de13d5b3658c\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:21:58.877984"
+  },
+  "treasurehunt2022.chapter.asset": {
+    "ETag": "\"81095aa2f552617cfb43e6bc39282142\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:22:00.108361"
+  },
+  "treasureship.chapter.asset": {
+    "ETag": "\"dccf9ac20af7d4dc1f25f63d7ebcfc6b\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:22:00.606039"
+  },
+  "treasureship2018.chapter.asset": {
+    "ETag": "\"8dc66b460a3e4a67256c65e3e246c79a\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:22:01.953150"
+  },
+  "triton.chapter.asset": {
+    "ETag": "\"cba43b5eeede285582e53cd1c8abdcca\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:22:03.072229"
+  },
+  "tropical2025.chapter.asset": {
+    "ETag": "\"7c74070362c7f7d28f625ca439b834cb\"",
+    "Last-Modified": "Fri, 10 Oct 2025 07:53:04 GMT",
+    "Last-Checked": "2025-12-08T13:22:03.564980"
+  },
+  "tuatgua.chapter.asset": {
+    "ETag": "\"d82f3017eb7f269a3044c33cc31f70db\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:22:04.550988"
+  },
+  "ulaanbaatar.chapter.asset": {
+    "ETag": "\"783bf4f8dd6fe985c363dd188499178d\"",
+    "Last-Modified": "Fri, 11 Apr 2025 05:10:26 GMT",
+    "Last-Checked": "2025-12-08T13:22:05.540181"
+  },
+  "valentine2017.chapter.asset": {
+    "ETag": "\"27c0493e7f56ae1a4e46d7357080a9d3\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:22:06.037578"
+  },
+  "valentine2021.chapter.asset": {
+    "ETag": "\"1acd183523e540bcaff0d9c43c0d3fd1\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:22:06.530388"
+  },
+  "valentinecross2024.chapter.asset": {
+    "ETag": "\"4c79c1144ef96cfcaa6951a0ae173430\"",
+    "Last-Modified": "Fri, 24 Jan 2025 05:30:03 GMT",
+    "Last-Checked": "2025-12-08T13:22:08.087213"
+  },
+  "valentinefantasy2022.chapter.asset": {
+    "ETag": "\"34e790816fd3fb10c5cf8d22c9f5ec71\"",
+    "Last-Modified": "Wed, 12 Feb 2025 05:29:01 GMT",
+    "Last-Checked": "2025-12-08T13:22:08.587618"
+  },
+  "valentinefesta2019.chapter.asset": {
+    "ETag": "\"800e7ffdfce8c34767e445d7f899908f\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:22:10.027476"
+  },
+  "valentineidol2025.chapter.asset": {
+    "ETag": "\"eab8318bc85d2a984bf01d96a38c5727\"",
+    "Last-Modified": "Tue, 17 Jun 2025 06:29:36 GMT",
+    "Last-Checked": "2025-12-08T13:22:11.503642"
+  },
+  "valentinesnow2023.chapter.asset": {
+    "ETag": "\"ee18c25923b89328d8b62c56ec6df5bc\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:22:13.285095"
+  },
+  "valentinetime2020.chapter.asset": {
+    "ETag": "\"09a69d3a777da7da113fa8c9402de7b7\"",
+    "Last-Modified": "Tue, 18 Feb 2025 05:47:04 GMT",
+    "Last-Checked": "2025-12-08T13:22:13.801776"
+  },
+  "vfesta2019.chapter.asset": {
+    "ETag": "\"33deee064a0099aaacd79e608b12c99d\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:39 GMT",
+    "Last-Checked": "2025-12-08T13:22:14.288422"
+  },
+  "virtualsummer2020.chapter.asset": {
+    "ETag": "\"4686e1085db8b9095cf18aba813a8c10\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:15.958146"
+  },
+  "vjail2018.chapter.asset": {
+    "ETag": "\"5369b87e7dffeb66e2a095e11123d743\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:17.441918"
+  },
+  "volos.chapter.asset": {
+    "ETag": "\"59dd57fbe8df8d24535658a9a25328db\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:18.559822"
+  },
+  "vsummer2020.chapter.asset": {
+    "ETag": "\"af32f3ca75f5ebdf38cc137d7888cbb1\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:19.907961"
+  },
+  "wakantanka.chapter.asset": {
+    "ETag": "\"d611cc65209b926307e5f4a49bad21dc\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:21.033474"
+  },
+  "xmas2016.chapter.asset": {
+    "ETag": "\"be52023b42b1171f9659bce31ae5a692\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:22.393468"
+  },
+  "xmas2017.chapter.asset": {
+    "ETag": "\"808ddecb9b57b648d1b9a425ceeaa2cb\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:23.820779"
+  },
+  "xmas2018.chapter.asset": {
+    "ETag": "\"4d23966545143604b9e6d17937286acd\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:25.365893"
+  },
+  "xmas2019.chapter.asset": {
+    "ETag": "\"223b8dfa2b61f4121cd8d49abe324566\"",
+    "Last-Modified": "Tue, 18 Feb 2025 05:47:04 GMT",
+    "Last-Checked": "2025-12-08T13:22:26.926617"
+  },
+  "xmas2020.chapter.asset": {
+    "ETag": "\"5f341ad6f75928c74544f363f2bffc08\"",
+    "Last-Modified": "Tue, 10 Jun 2025 05:55:59 GMT",
+    "Last-Checked": "2025-12-08T13:22:28.355629"
+  },
+  "xmas2021.chapter.asset": {
+    "ETag": "\"21f76f389a8e41f3f52c274ae918afb2\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:29.258050"
+  },
+  "xmas2022.chapter.asset": {
+    "ETag": "\"7becb75e9d0ed612ead8425a8087db35\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:30.655301"
+  },
+  "xmas2023.chapter.asset": {
+    "ETag": "\"b140c01139183e9cae70840a8304fb22\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:31.513220"
+  },
+  "xmas2024.chapter.asset": {
+    "ETag": "\"9310fbe2e94ef5776b794370279ec944\"",
+    "Last-Modified": "Tue, 24 Dec 2024 12:06:58 GMT",
+    "Last-Checked": "2025-12-08T13:22:32.864342"
+  },
+  "xmas2025.chapter.asset": {
+    "ETag": "\"213c4c0973d54ca9e844f62dbf8540d6\"",
+    "Last-Modified": "Fri, 05 Dec 2025 08:59:12 GMT",
+    "Last-Checked": "2025-12-08T13:22:33.344971"
+  },
+  "xolotl.chapter.asset": {
+    "ETag": "\"bd0241f96ae676f102ce580e3d6b388d\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:34.347534"
+  },
+  "yamasachihiko.chapter.asset": {
+    "ETag": "\"c09862dffd94d4a440eda6dc27354ded\"",
+    "Last-Modified": "Fri, 18 Oct 2024 06:00:38 GMT",
+    "Last-Checked": "2025-12-08T13:22:35.110360"
+  },
+  "yasuyori.chapter.asset": {
+    "ETag": "\"278d511c2529e10aba8f4cf7226bc8d4\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:36.208924"
+  },
+  "zabaniya.chapter.asset": {
+    "ETag": "\"cc3187efc10d1e3ce625380c02325a24\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:37.503178"
+  },
+  "zaou.chapter.asset": {
+    "ETag": "\"5b5f72e536b5548e76233726007b402c\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:38.583211"
+  },
+  "zhurong.chapter.asset": {
+    "ETag": "\"6b35755c8413a6560c654e4c2ee49e1a\"",
+    "Last-Modified": "Fri, 11 Oct 2024 05:21:40 GMT",
+    "Last-Checked": "2025-12-08T13:22:39.915036"
+  }
+}

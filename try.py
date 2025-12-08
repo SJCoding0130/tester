@@ -19,7 +19,7 @@ def log(message: str):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     line = f"[{timestamp}] {message}"
     print(line)
-    with open(LOG_FILE, "w", encoding="utf-8") as f:
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
         f.write(line + "\n")
 
 def load_metadata():
@@ -126,5 +126,6 @@ if __name__ == "__main__":
     else:
         log(" No assets found, skipping download.")
     log("=== Process finished ===")
+
 
 

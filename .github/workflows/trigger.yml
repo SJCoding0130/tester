@@ -22,12 +22,7 @@ jobs:
         token: ${{ secrets.bla }}   # Must allow writes
         fetch-depth: 0
 
-    # ==========================
-    # 2. Download main bin file
-    # ==========================
-    - name: Download CloudFront file
-      run: |
-        curl.exe -L "${{secrets.link1}}" -o target.bin
+
     # ==========================
     # 3. Python setup
     # ==========================
@@ -36,10 +31,10 @@ jobs:
       with:
         python-version: "3.11"
 
-    - name: Install UnityPy & requests
+    - name: Install requests
       run: |
         python -m pip install --upgrade pip
-        pip install UnityPy
+
         pip install requests
                 
     # ==========================

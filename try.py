@@ -19,8 +19,8 @@ def log(message: str):
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     line = f"[{timestamp}] {message}"
     print(line)
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        f.write(line + "\n")
+    with open(LOG_FILE, "w", encoding="utf-8") as f:
+        f.write(f"=== Log started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ===\n")
 
 def load_metadata():
     """Load saved metadata (ETag/Last-Modified info) from file."""
@@ -126,3 +126,4 @@ if __name__ == "__main__":
     else:
         log(" No assets found, skipping download.")
     log("=== Process finished ===")
+

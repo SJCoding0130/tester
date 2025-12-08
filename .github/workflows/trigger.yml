@@ -42,10 +42,7 @@ jobs:
     # ==========================
     # 4. Download main bin file
     # ==========================
-    - name: Download asset file
-      run: |
-        curl.exe -L "${{secrets.link3}}" -o target.bin
 
-    - name: List down all the chapter.asset
+    - name: Download the file
       run: |
         python "try.py" "target.bin"

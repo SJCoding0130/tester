@@ -14,6 +14,10 @@ META_FILE = "asset_metadata.json"
 os.makedirs(SAVE_DIR, exist_ok=True)
 
 # === UTILITIES ===
+# === Overwrite log at start of script ===
+with open(LOG_FILE, "w", encoding="utf-8") as f:
+    f.write(f"=== Log started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ===\n")
+
 def log(message: str):
     """Append message to log file with timestamp."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -126,6 +130,7 @@ if __name__ == "__main__":
     else:
         log(" No assets found, skipping download.")
     log("=== Process finished ===")
+
 
 
 

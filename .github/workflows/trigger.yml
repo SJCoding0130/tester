@@ -4,10 +4,10 @@ on:
 
 jobs:
   run-python:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     permissions:
-      contents: write   # Required for git push using GITHUB_TOKEN
+      contents: write
 
     env:
       ASSET_RIPPER_VERSION: "0.3.4.0"
@@ -19,8 +19,21 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
       with:
-        token: ${{ secrets.bla }}   # Must allow writes
+        token: ${{ secrets.bla }}
         fetch-depth: 0
+
+    # ==========================
+    # 1.5 Restore asset_metadata.json
+    # (ensures try.py can read previous metadata)
+    # ==========================
+    - name: Restore asset metadata
+      run: |
+        if exist asset_metadata.json (
+            echo "asset_metadata.json found."
+        ) else (
+            echo "{}" > asset_metadata.json
+            echo "Created empty asset_metadata.json"
+        )
 
     # ==========================
     # 2. Download main bin file
@@ -62,4 +75,4 @@ jobs:
         git commit -m "Auto-update output from workflow" || echo "No changes to commit"
         git push
       env:
-        GITHUB_TOKEN: ${{ secrets.bla }}   # or ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.bla }}

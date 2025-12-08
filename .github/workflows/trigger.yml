@@ -3,153 +3,72 @@ on:
   workflow_dispatch:
 
 jobs:
-  run-assets:
+  run-python:
     runs-on: windows-latest
 
     permissions:
       contents: write
 
+    env:
+      ASSET_RIPPER_VERSION: "0.3.4.0"
+
     steps:
-      # ==========================
-      # 1. Checkout repo
-      # ==========================
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.bla }}
-          fetch-depth: 0
+    # ==========================
+    # 1. Checkout repo
+    # ==========================
+    - name: Checkout repo
+      uses: actions/checkout@v4
+      with:
+        token: ${{ secrets.bla }}
+        fetch-depth: 0
 
-      # ==========================
-      # 1.5 Restore asset_metadata.json
-      # ==========================
-      - name: Restore asset metadata
-        run: |
-          if (Test-Path "asset_metadata.json") {
-            Write-Output "asset_metadata.json found."
-          } else {
-            '{}' | Out-File asset_metadata.json -Encoding utf8
-            Write-Output "Created empty asset_metadata.json"
-          }
+    # ==========================
+    # 1.5 Restore asset_metadata.json
+    # (ensures try.py can read previous metadata)
+    # ==========================
+    - name: Restore asset metadata
+      run: |
+        if (Test-Path "asset_metadata.json") {
+        Write-Output "asset_metadata.json found."
+        } else {
+        "{}" | Out-File asset_metadata.json -Encoding utf8
+        Write-Output "Created empty asset_metadata.json"
+        }
+    # ==========================
+    # 2. Download main bin file
+    # ==========================
+    - name: Download CloudFront file
+      run: |
+        curl.exe -L "${{secrets.link1}}" -o target.bin
+    # ==========================
+    # 3. Python setup
+    # ==========================
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
 
-      # ==========================
-      # 2. Install jq (JSON parser)
-      # ==========================
-      - name: Install jq
-        run: |
-          choco install jq -y
-
-      # ==========================
-      # 3. Download assets in parallel
-      # ==========================
-      - name: Download chapter assets (parallel)
-        shell: pwsh
-        run: |
-          $SOURCE_URL = "https://api.housamo.xyz/housamo/unity/json/?file=/housamo/adv2024/Android/Android&mode=raw"
-          $BASE_URL   = "https://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/"
-          $SAVE_DIR   = "downloaded_assets"
-          $LOG_FILE   = "chapter_asset_log.txt"
-          $META_FILE  = "asset_metadata.json"
-
-          New-Item -ItemType Directory -Path $SAVE_DIR -Force | Out-Null
-
-          function Log($msg) {
-            $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-            $line = "[$timestamp] $msg"
-            Write-Output $line
-            Add-Content -Path $LOG_FILE -Value $line
-          }
-
-          # Load metadata
-          if (Test-Path $META_FILE) {
-            $metadata = Get-Content $META_FILE -Raw | ConvertFrom-Json
-          } else {
-            $metadata = @{}
-          }
-
-          # Fetch JSON
-          try {
-            $json = Invoke-RestMethod -Uri $SOURCE_URL -TimeoutSec 30
-          } catch {
-            Log "Failed to fetch JSON: $_"
-            exit 1
-          }
-
-          # Extract .chapter.asset filenames
-          $assets = @()
-          foreach ($entry in $json) {
-            foreach ($pair in $entry.AssetBundleNames) {
-              if ($pair.Count -eq 2 -and $pair[1] -like "*.chapter.asset") {
-                $assets += [System.IO.Path]::GetFileName($pair[1])
-              }
-            }
-          }
-          $assets = $assets | Sort-Object -Unique
-          Log "Found $($assets.Count) .chapter.asset files."
-
-          # Convert metadata to synchronized object for parallel access
-          $syncMeta = [System.Collections.Concurrent.ConcurrentDictionary[string,object]]::new()
-          foreach ($key in $metadata.Keys) {
-            $syncMeta[$key] = $metadata[$key]
-          }
-
-          # Parallel download function
-          $assets | ForEach-Object -Parallel {
-            param($asset, $BASE_URL, $SAVE_DIR, $LOG_FILE, $syncMeta)
-
-            function Log($msg) {
-              $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
-              $line = "[$timestamp] $msg"
-              Write-Output $line
-              Add-Content -Path $LOG_FILE -Value $line
-            }
-
-            $url = "$BASE_URL$asset"
-            $savePath = Join-Path $SAVE_DIR $asset
-
-            try {
-              $head = Invoke-WebRequest -Uri $url -Method Head -UseBasicParsing
-              $etag = $head.Headers.ETag
-              $lastMod = $head.Headers."Last-Modified"
-            } catch {
-              Log "HEAD request failed for $asset: $_"
-              return
-            }
-
-            $prev = $syncMeta.GetOrAdd($asset, @{})
-
-            if (($etag -and $prev.ETag -eq $etag) -or ($lastMod -and $prev.'Last-Modified' -eq $lastMod)) {
-              Log "SKIPPED (no change): $asset"
-              return
-            }
-
-            try {
-              Invoke-WebRequest -Uri $url -OutFile $savePath -UseBasicParsing -TimeoutSec 30
-              Log "DOWNLOADED: $asset"
-              $syncMeta[$asset] = @{
-                ETag = $etag
-                'Last-Modified' = $lastMod
-                'Last-Checked' = (Get-Date).ToString("o")
-              }
-            } catch {
-              Log "ERROR downloading $asset: $_"
-            }
-          } -ArgumentList $BASE_URL, $SAVE_DIR, $LOG_FILE, $syncMeta -ThrottleLimit 8
-
-          # Save metadata
-          $syncMeta.GetEnumerator() | ForEach-Object {
-            $metadata[$_.Key] = $_.Value
-          }
-          $metadata | ConvertTo-Json -Depth 3 | Set-Content $META_FILE
-
-      # ==========================
-      # 4. Commit & push results
-      # ==========================
-      - name: Push output to GitHub
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Auto-update output from workflow" || echo "No changes to commit"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.bla }}
+    - name: Install UnityPy & requests
+      run: |
+        python -m pip install --upgrade pip
+        pip install UnityPy
+        pip install requests
+                
+    # ==========================
+    # 4. Run Python script
+    # ==========================
+    - name: Run try.py
+      run: |
+        python "try.py" "target.bin"
+    # ==========================
+    # 5. Commit & push results
+    # ==========================
+    - name: Push output to GitHub
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "github-actions[bot]@users.noreply.github.com"
+        git add -A
+        git commit -m "Auto-update output from workflow" || echo "No changes to commit"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.bla }}

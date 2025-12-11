@@ -44,7 +44,7 @@ jobs:
     - name: Run try.py (outputs into repo_b directory)
       run: |
         cd repo_b
-        python ../try.py
+        python -u ../try.py
 
     # ==========================
     # 5. Push repo B updates

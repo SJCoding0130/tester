@@ -1,16 +1,23 @@
-name: Revert Commit
+name: Hard Reset Repository
 
 on:
   workflow_dispatch:
     inputs:
       commit_sha:
-        description: "Commit SHA to revert"
+        description: "Commit SHA to reset to"
         required: true
 
 jobs:
-  revert:
+  reset:
     runs-on: ubuntu-latest
+
     steps:
+      - name: Verify repository owner
+        if: github.actor != github.repository_owner
+        run: |
+          echo "❌ Only the repository owner can run this workflow."
+          exit 1
+
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
@@ -18,13 +25,13 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "SJCoding0130"
+          git config user.email "snoopyjian_0130@hotmail.com"
 
-      - name: Revert commit
+      - name: Hard reset to commit
         run: |
-          git revert --no-edit ${{ github.event.inputs.commit_sha }}
+          git reset --hard ${{ github.event.inputs.commit_sha }}
 
-      - name: Push changes
+      - name: Force push
         run: |
-          git push
+          git push --force

@@ -98,7 +98,7 @@ def download_assets(assets):
         # Skip if unchanged
         if (
             (etag and prev.get("ETag") == etag)
-            or (last_mod and prev.get("Last-Modified") == last_mod)
+            and (last_mod and prev.get("Last-Modified") == last_mod)
         ):
             log(f" SKIPPED (no change): {asset}")
             continue
@@ -130,6 +130,7 @@ if __name__ == "__main__":
     else:
         log(" No assets found, skipping download.")
     log("=== Process finished ===")
+
 
 
 

@@ -46,7 +46,7 @@ jobs:
         cd repo_b
         python -u ../try.py
         echo "===== Files in repo_b ====="
-        ls -la
+        Get-ChildItem -Recurse -Force
 
     # ==========================
     # 5. Push repo B updates

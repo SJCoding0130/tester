@@ -23,7 +23,9 @@ jobs:
         repository: SJCoding0130/story
         token: ${{ secrets.OTHER_REPO_TOKEN }}
         path: repo_b
-        fetch-depth: 0
+        fetch-depth: 1       # shallow clone
+        sparse-checkout: |
+          asset_metadata.json
 
     # ==========================
     # 3. Set up Python

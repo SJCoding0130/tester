@@ -17,8 +17,10 @@ def wait_for_server(url, timeout=15):
     raise RuntimeError(f"PHP server did not start at {url} within {timeout}s")
 
 # Start PHP server
+php_cwd = Path(__file__).parent
 process = subprocess.Popen(
     ["php", "-S", "localhost:8000"],
+    cwd=php_cwd,
     stdout=subprocess.PIPE,
     stderr=subprocess.PIPE
 )
@@ -59,6 +61,7 @@ for file_path in json_files:
         with open(file_path, "rb") as f:
             files = {"jsonFile": f}
             response = requests.post(url, data=form, files=files)
+            print(f"    HTTP status: {response.status_code}, Response length: {len(response.text)}")
 
         output_file = lang_folder / f"{file_path.stem}.html"
         with open(output_file, "w", encoding="utf-8") as out_f:
@@ -69,8 +72,6 @@ print("All files & languages processed!")
 process.terminate()
 process.wait()
 
-# Terminate PHP server
-process.terminate()
-process.wait()
 print("PHP server terminated.")
+
 

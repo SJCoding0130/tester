@@ -51,6 +51,7 @@ jobs:
         cd repo_b
         python -u ../try.py
         python -u ../test.py
+        pwd
         python -u ../ttt.py
 
         echo "===== Files in repo_b ====="

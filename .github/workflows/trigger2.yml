@@ -39,8 +39,10 @@ jobs:
     - name: Install dependencies
       run: |
         pip install -U pip
+        php -v
         pip install requests
         pip install UnityPy
+        pip install php
 
     # ==========================
     # 4. Run python script

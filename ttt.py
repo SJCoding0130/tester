@@ -11,7 +11,7 @@ subprocess.Popen(
 )
 
 # Folder containing .book.json files
-json_folder = Path("./New Folder")
+json_folder = Path("./json")
 json_files = sorted(json_folder.glob("*.book.json"))  # sort files alphabetically
 
 # Endpoint URL
@@ -70,3 +70,4 @@ for file_path in json_files:
         print(f"    Saved: {output_file}")
 
 print("All files & languages processed!")
+

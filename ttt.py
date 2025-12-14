@@ -23,6 +23,7 @@ def wait_for_server(url, timeout=15):
 # Paths
 # -----------------------------
 BASE_DIR = Path(__file__).parent.resolve()  # folder containing view.php
+print(f"BASE_DIR = {BASE_DIR}")
 JSON_FOLDER = BASE_DIR / "json"
 OUTPUT_BASE = BASE_DIR / "output"
 OUTPUT_BASE.mkdir(parents=True, exist_ok=True)
@@ -94,3 +95,4 @@ php_process.terminate()
 php_process.wait()
 print("PHP server terminated.")
 print("All files & languages processed!")
+

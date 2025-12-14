@@ -42,7 +42,14 @@ jobs:
         php -v
         pip install requests
         pip install UnityPy
-        pip install php
+        
+        # 4. Setup PHP
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: "8.2"
+        coverage: none        
+        
 
     # ==========================
     # 4. Run python script

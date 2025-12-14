@@ -110,10 +110,10 @@ jobs:
         $response.Content | Out-File $outputFile -Encoding UTF8
 
         Write-Host "    Saved: $outputFile"
-    }
-}
+            }
+        }
 
-Write-Host "All files & languages processed!"
+        Write-Host "All files & languages processed!"
 
 
 

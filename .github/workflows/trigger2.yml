@@ -39,6 +39,7 @@ jobs:
       run: |
         pip install -U pip
         pip install requests
+        pip install UnityPy
 
     # ==========================
     # 4. Run python script
@@ -47,6 +48,7 @@ jobs:
       run: |
         cd repo_b
         python -u ../try.py
+        python -u ../test.py
         echo "===== Files in repo_b ====="
         Get-ChildItem -Recurse -Force
 

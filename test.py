@@ -68,7 +68,7 @@ def extract_book(bundle_path):
 def auto_extract(bundle_path):
     filename = os.path.basename(bundle_path)
 
-    if filename.endswith(".chapter.asset"):
+    if filename == "common.chapter.asset":
         print(f"[INFO] Detected CHAPTER asset : {filename}")
         extract_chapter(bundle_path)
     else:

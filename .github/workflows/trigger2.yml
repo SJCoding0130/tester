@@ -13,6 +13,14 @@ jobs:
     - name: Checkout Repo A
       uses: actions/checkout@v4
 
+    - name: List files in Repo A
+      shell: pwsh
+      run: |
+        echo "===== Files in Repo A ====="
+        Get-ChildItem -Recurse -Force
+
+      
+
     # ==========================
     # 2. Checkout Repo B into subfolder
     # ==========================

@@ -36,8 +36,11 @@ def extract_chapter(bundle_path):
             if name.endswith(".chapter"):
                 found = True
                 data = obj.read_typetree()
-                write_json(bundle_path, data)
-
+                
+                output = os.path.splitext(bundle_path)[0] + ".json"
+                with open(output, "w", encoding="utf-8") as f:
+                    json.dump(data, f, indent=4, ensure_ascii=False)
+ print(f"[INFO] Extracted CHAPTER : {output}")
     if not found:
         print("[WARNING] No .chapter MonoBehaviour found.")
 
@@ -59,7 +62,12 @@ def extract_book(bundle_path):
             if name.endswith(".book"):
                 found = True
                 data = obj.read_typetree()
-                write_json(bundle_path, data)
+                
+               output = os.path.splitext(bundle_path)[0] + ".json"
+                with open(output, "w", encoding="utf-8") as f:
+                    json.dump(data, f, indent=4, ensure_ascii=False)
+
+                print(f"[INFO] Extracted CHAPTER : {output}")
 
     if not found:
         print("[WARNING] No .book MonoBehaviour found.")

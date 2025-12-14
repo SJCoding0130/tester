@@ -26,6 +26,7 @@ jobs:
         fetch-depth: 1       # shallow clone
         sparse-checkout: |
           asset_metadata.json
+          view.php
 
     # ==========================
     # 3. Set up Python
@@ -44,13 +45,72 @@ jobs:
     # ==========================
     # 4. Run python script
     # ==========================
-    - name: Run try.py (outputs into repo_b directory)
+    - name: Run try.py and test.py
+      shell: pwsh
       run: |
         cd repo_b
         python -u ../try.py
         python -u ../test.py
+
         echo "===== Files in repo_b ====="
         Get-ChildItem -Recurse -Force
+
+        # Folder containing .book.json files
+        $jsonFolder = ".\json"
+
+        # Endpoint URL
+        $url = "http://localhost:8000/view.php"
+
+        # Languages to generate
+        $languages = @(
+        "Text",
+        "English",
+        "ChineseTraditional",
+        "ChineseSimplified"
+        )
+
+        # Find all .book.json files
+        $jsonFiles = Get-ChildItem $jsonFolder -Filter "*.book.json"
+
+        foreach ($file in $jsonFiles) {
+
+        $baseName = [System.IO.Path]::GetFileNameWithoutExtension($file.Name)
+
+        Write-Host "========================================"
+        Write-Host "Processing file: $($file.Name)"
+        Write-Host "========================================"
+
+        foreach ($lang in $languages) {
+
+            Write-Host "  → Language: $lang"
+
+            # Map Text → Japanese (for filename only)
+            $langLabel = if ($lang -eq "Text") { "Japanese" } else { $lang }
+
+            $form = @{
+                "language"   = $lang
+                "playerName" = ""
+                "jsonFile"   = $file.FullName
+            }
+
+            $response = Invoke-WebRequest `
+                -Uri $url `
+                -Method Post `
+                -Form $form
+
+            # Output filename
+            $outputDir = ".\output"
+            New-Item -ItemType Directory -Force -Path $outputDir | Out-Null
+            $outputFile = Join-Path $outputDir "${baseName}_$langLabel.html"
+
+            $response.Content | Out-File $outputFile -Encoding UTF8
+
+            Write-Host "    Saved: $outputFile"
+        }
+        }
+
+        Write-Host "All files & languages processed!"
+
 
     # ==========================
     # 5. Push repo B updates

@@ -2,13 +2,26 @@ import os
 import requests
 from pathlib import Path
 import subprocess
+import time
+
+def wait_for_server(url, timeout=5):
+    start = time.time()
+    while time.time() - start < timeout:
+        try:
+            requests.get(url)
+            return True
+        except requests.exceptions.ConnectionError:
+            time.sleep(0.1)
+    raise RuntimeError("PHP server did not start in time")
+
 
 # Start PHP built-in server
-subprocess.Popen(
+process = subprocess.Popen(
     ["php", "-S", "localhost:8000"],
     stdout=subprocess.DEVNULL,
     stderr=subprocess.DEVNULL
 )
+wait_for_server("http://localhost:8000")
 
 # Folder containing .book.json files
 json_folder = Path("./json")
@@ -70,4 +83,3 @@ for file_path in json_files:
         print(f"    Saved: {output_file}")
 
 print("All files & languages processed!")
-

@@ -68,7 +68,7 @@ for file_path in json_files:
     print("="*40)
 
     for lang in LANGUAGES:
-        print(f"  → Language: {lang}")
+        print(f"  : Language: {lang}")
         lang_label = "Japanese" if lang == "Text" else lang
         lang_folder = OUTPUT_BASE / "".join(c for c in lang_label if c.isalnum() or c in "_-")
         lang_folder.mkdir(parents=True, exist_ok=True)

@@ -18,14 +18,14 @@ def wait_for_server(url, timeout=15):
 
 # Start PHP server
 process = subprocess.Popen(
-    ["php", "-S", "0.0.0.0:8000"],
+    ["php", "-S", "localhost:8000"],
     stdout=subprocess.PIPE,
     stderr=subprocess.PIPE
 )
 try:
-    wait_for_server("http://0.0.0.0:8000")
+    wait_for_server("http://localhost:8000")
 except RuntimeError as e:
-    stdout, stderr = process.communicate(timeout=1)
+    stdout, stderr = process.communicate(timeout=5)
     print("PHP stdout:", stdout.decode(), file=sys.stderr)
     print("PHP stderr:", stderr.decode(), file=sys.stderr)
     process.terminate()
@@ -36,7 +36,7 @@ json_folder = Path(__file__).parent / "json"
 json_files = sorted(json_folder.glob("*.book.json"))
 
 # Endpoint URL
-url = "http://0.0.0.0:8000/view.php"
+url = "http://localhost:8000/view.php"
 
 # Languages
 languages = ["Text", "English", "ChineseTraditional", "ChineseSimplified"]
@@ -66,8 +66,11 @@ for file_path in json_files:
         print(f"    Saved: {output_file}")
 
 print("All files & languages processed!")
+process.terminate()
+process.wait()
 
 # Terminate PHP server
 process.terminate()
 process.wait()
 print("PHP server terminated.")
+

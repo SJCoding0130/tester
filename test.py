@@ -16,7 +16,7 @@ def write_json(bundle_path, data):
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
-    print(f"[INFO] Saved JSON → {output_path}")
+    print(f"[INFO] Saved JSON : {output_path}")
 
 
 def extract_chapter(bundle_path):
@@ -69,15 +69,15 @@ def auto_extract(bundle_path):
     filename = os.path.basename(bundle_path)
 
     if filename.endswith(".chapter.asset"):
-        print(f"[INFO] Detected CHAPTER asset → {filename}")
+        print(f"[INFO] Detected CHAPTER asset : {filename}")
         extract_chapter(bundle_path)
     else:
-        print(f"[INFO] Running BOOK extractor → {filename}")
+        print(f"[INFO] Running BOOK extractor : {filename}")
         extract_book(bundle_path)
 
 
 def process_directory(directory):
-    print(f"[INFO] Processing directory → {directory}")
+    print(f"[INFO] Processing directory : {directory}")
 
     for root, _, files in os.walk(directory):
         for file in files:

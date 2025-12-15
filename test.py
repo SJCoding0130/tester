@@ -9,9 +9,10 @@ OUTPUT_DIR = os.path.join(os.getcwd(), "json")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
-def write_json(bundle_path, data):
+def write_json(bundle_path, data, suffix):
     base_name = os.path.splitext(os.path.basename(bundle_path))[0]
-    output_path = os.path.join(OUTPUT_DIR, f"{base_name}.json")
+    base_name = base_name.replace(".chapter", "").replace(".book", "")
+    output_path = os.path.join(OUTPUT_DIR, f"{base_name}.{suffix}.json")
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
@@ -29,18 +30,17 @@ def extract_chapter(bundle_path):
     found = False
 
     for obj in env.objects:
-        if obj.type.name == "MonoBehaviour":
-            mb = obj.read()
-            name = getattr(mb, "m_Name", "")
+        if obj.type.name != "MonoBehaviour":
+            continue
 
-            if name.endswith(".chapter"):
-                found = True
-                data = obj.read_typetree()
-                
-                output = os.path.splitext(bundle_path)[0] + ".json"
-                with open(output, "w", encoding="utf-8") as f:
-                    json.dump(data, f, indent=4, ensure_ascii=False)
- print(f"[INFO] Extracted CHAPTER : {output}")
+        mb = obj.read()
+        name = getattr(mb, "m_Name", "")
+
+        if name.endswith(".chapter"):
+            found = True
+            data = obj.read_typetree()
+            write_json(bundle_path, data, "chapter")
+
     if not found:
         print("[WARNING] No .chapter MonoBehaviour found.")
 
@@ -55,19 +55,16 @@ def extract_book(bundle_path):
     found = False
 
     for obj in env.objects:
-        if obj.type.name == "MonoBehaviour":
-            mb = obj.read()
-            name = getattr(mb, "m_Name", "")
+        if obj.type.name != "MonoBehaviour":
+            continue
 
-            if name.endswith(".book"):
-                found = True
-                data = obj.read_typetree()
-                
-               output = os.path.splitext(bundle_path)[0] + ".json"
-                with open(output, "w", encoding="utf-8") as f:
-                    json.dump(data, f, indent=4, ensure_ascii=False)
+        mb = obj.read()
+        name = getattr(mb, "m_Name", "")
 
-                print(f"[INFO] Extracted CHAPTER : {output}")
+        if name.endswith(".book"):
+            found = True
+            data = obj.read_typetree()
+            write_json(bundle_path, data, "book")
 
     if not found:
         print("[WARNING] No .book MonoBehaviour found.")
@@ -90,8 +87,7 @@ def process_directory(directory):
     for root, _, files in os.walk(directory):
         for file in files:
             if file.endswith(".asset"):
-                full_path = os.path.join(root, file)
-                auto_extract(full_path)
+                auto_extract(os.path.join(root, file))
 
 
 if __name__ == "__main__":

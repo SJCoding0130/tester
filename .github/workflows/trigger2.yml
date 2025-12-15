@@ -69,7 +69,6 @@ jobs:
         python -u ../try.py
         python -u ../test.py
         python -u ../ttt.py
-        python -u ./ttt.py
 
         echo "===== Files in repo_b ====="
         Get-ChildItem -Recurse -Force
@@ -85,6 +84,8 @@ jobs:
         git config user.email "github-actions[bot]@users.noreply.github.com"
         git add -A
         git reset downloaded_assets/
+        git reset json/
+        git add json/common.chapter.json
         git commit -m "Update from Repo A workflow" || echo "No changes"
         git push
       env:

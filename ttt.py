@@ -83,7 +83,7 @@ for file_path in json_files:
     print("=" * 40, flush=True)
 
     for lang in LANGUAGES:
-        print(f"  → Language: {lang}", flush=True)
+        print(f"  Language: {lang}", flush=True)
 
         lang_label = "Japanese" if lang == "Text" else lang
         lang_folder = OUTPUT_BASE / "".join(
@@ -130,3 +130,4 @@ php_process.wait(timeout=5)
 
 print("PHP server terminated.", flush=True)
 print("All files & languages processed!", flush=True)
+

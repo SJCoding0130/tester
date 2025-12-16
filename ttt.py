@@ -43,8 +43,8 @@ print("Starting PHP server...", flush=True)
 php_process = subprocess.Popen(
     ["php", "-S", "localhost:8000"],
     cwd=BASE_DIR,
-    stdout=subprocess.PIPE,
-    stderr=subprocess.PIPE
+    stdout=subprocess.DEVNULL,
+    stderr=subprocess.DEVNULL
 )
 
 try:
@@ -130,4 +130,5 @@ php_process.wait(timeout=5)
 
 print("PHP server terminated.", flush=True)
 print("All files & languages processed!", flush=True)
+
 

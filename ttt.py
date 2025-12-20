@@ -102,6 +102,7 @@ for file_path in json_files:
                     files=files,
                     timeout=120   # 🚨 CRITICAL: prevent hangs
                 )
+                time.sleep(0.3)
         except requests.exceptions.Timeout:
             print(f"     TIMEOUT: {file_path.name} [{lang}]", flush=True)
             continue
@@ -130,5 +131,6 @@ php_process.wait(timeout=5)
 
 print("PHP server terminated.", flush=True)
 print("All files & languages processed!", flush=True)
+
 
 

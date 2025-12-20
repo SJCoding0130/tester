@@ -1,52 +1,49 @@
-import UnityPy
-import sys
 import os
+import requests
+import UnityPy
 
-def save_manifest(bundle_path, output_file):
-    if not os.path.exists(bundle_path):
-        print(f"[ERROR] File does not exist: {bundle_path}")
+URL = "http://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/Android"
+BUNDLE_FILE = "Android.bundle"
+OUTPUT_FILE = "chapters.txt"
+
+
+def download_bundle(url, path):
+    if os.path.exists(path):
         return
 
-    try:
-        env = UnityPy.load(bundle_path)
-    except Exception as e:
-        print(f"[ERROR] Failed to load UnityFS file: {e}")
-        return
+    r = requests.get(url, stream=True)
+    r.raise_for_status()
 
-    manifest_found = False
-    lines = []
+    with open(path, "wb") as f:
+        for chunk in r.iter_content(chunk_size=8192):
+            f.write(chunk)
+
+
+def list_chapter_assets(bundle_path, output_file):
+    env = UnityPy.load(bundle_path)
+
+    results = []
 
     for obj in env.objects:
         if obj.type.name == "AssetBundleManifest":
             manifest = obj.read()
-            manifest_found = True
 
-            # Unity sometimes returns either "name" or [index, name]
             for item in manifest.AssetBundleNames:
-                # Handle [index, name] format
-                name = item[1] if isinstance(item, (list, tuple)) and len(item) == 2 else item
-
-                # Only add items that end with ".chapter.asset"
+                name = item[1] if isinstance(item, (list, tuple)) else item
                 if name.endswith(".chapter.asset"):
-                    lines.append(name)
-
+                    results.append(name)
             break
 
-    if not manifest_found:
-        print("[WARNING] No AssetBundleManifest found in this file.")
-        return
+    # 🔽 SORT ALPHABETICALLY
+    results.sort()
 
-    # Save as plain text (not JSON)
     with open(output_file, "w", encoding="utf-8") as f:
-        for line in lines:
-            f.write(line + "\n")
+        for name in results:
+            f.write(name + "\n")
 
-    print(f"[INFO] Manifest saved to {output_file}")
+    print(f"[INFO] {len(results)} entries written (sorted)")
+
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: python extract_manifest.py <path_to_unityfs_file>")
-    else:
-        file_path = sys.argv[1]
-        save_manifest(file_path, "outputs.txt")
-
+    download_bundle(URL, BUNDLE_FILE)
+    list_chapter_assets(BUNDLE_FILE, OUTPUT_FILE)

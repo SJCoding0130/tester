@@ -23,7 +23,7 @@ def wait_for_server(url, timeout=20):
                 print("PHP server is ready!", flush=True)
                 return
         except requests.exceptions.RequestException:
-            time.sleep(0.3)
+            time.sleep(1.0)
     raise RuntimeError(f"PHP server did not start at {url} within {timeout}s")
 
 # ----------------------------------
@@ -131,6 +131,7 @@ php_process.wait(timeout=5)
 
 print("PHP server terminated.", flush=True)
 print("All files & languages processed!", flush=True)
+
 
 
 

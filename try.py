@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 
 # === CONFIG ===
-SOURCE_URL = "https://api.housamo.xyz/housamo/unity/json/?file=/housamo/adv2024/Android/Android&mode=raw"
+CHAPTER_LIST_FILE = "chapters.txt"  # output from UnityPy script
 BASE_URL = "https://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/"
 SAVE_DIR = "downloaded_assets"
 
@@ -40,30 +40,22 @@ def save_metadata(metadata):
 
 # === STEP 1: Extract chapter asset filenames ===
 def extract_chapter_assets():
-    log(f"Fetching JSON data from: {SOURCE_URL}")
-    try:
-        response = requests.get(SOURCE_URL, timeout=30)
-        response.raise_for_status()
-        data = response.json()
-    except Exception as e:
-        log(f" Failed to fetch or parse JSON: {e}")
+    if not os.path.exists(CHAPTER_LIST_FILE):
+        log(f" Chapter list file not found: {CHAPTER_LIST_FILE}")
         return []
 
     chapter_assets = []
 
-    for entry in data:
-        if "AssetBundleNames" in entry:
-            for pair in entry["AssetBundleNames"]:
-                if isinstance(pair, list) and len(pair) == 2:
-                    asset_path = pair[1]
-                    if asset_path.endswith(".chapter.asset"):
-                        # Extract just the filename (e.g. "main1.chapter.asset")
-                        filename = os.path.basename(asset_path)
-                        chapter_assets.append(filename)
+    with open(CHAPTER_LIST_FILE, "r", encoding="utf-8") as f:
+        for line in f:
+            name = line.strip()
+            if name.endswith(".chapter.asset"):
+                chapter_assets.append(name)
 
     chapter_assets = sorted(set(chapter_assets))
-    log(f" Found {len(chapter_assets)} .chapter.asset files.")
+    log(f" Found {len(chapter_assets)} .chapter.asset files from list.")
     return chapter_assets
+
 
 # === STEP 2: Download assets with caching ===
 def get_remote_headers(url):
@@ -130,6 +122,7 @@ if __name__ == "__main__":
     else:
         log(" No assets found, skipping download.")
     log("=== Process finished ===")
+
 
 
 

@@ -66,6 +66,7 @@ jobs:
       shell: pwsh
       run: |
         cd repo_b
+        python -u ../chapter.py
         python -u ../try.py
         python -u ../test.py
         python -u ../ttt.py

@@ -41,11 +41,18 @@ OUTPUT_BASE.mkdir(parents=True, exist_ok=True)
 # ----------------------------------
 print("Starting PHP server...", flush=True)
 php_process = subprocess.Popen(
-    ["php", "-S", "localhost:8000"],
+    [
+        "php",
+        "-d", "upload_max_filesize=50M",
+        "-d", "post_max_size=50M",
+        "-d", "max_execution_time=300",
+        "-S", "localhost:8000"
+    ],
     cwd=BASE_DIR,
     stdout=subprocess.DEVNULL,
     stderr=subprocess.DEVNULL
 )
+
 
 try:
     wait_for_server("http://localhost:8000")
@@ -131,6 +138,7 @@ php_process.wait(timeout=5)
 
 print("PHP server terminated.", flush=True)
 print("All files & languages processed!", flush=True)
+
 
 
 

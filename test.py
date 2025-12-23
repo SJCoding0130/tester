@@ -9,10 +9,10 @@ OUTPUT_DIR = os.path.join(os.getcwd(), "json")
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 
-def write_json(bundle_path, data, suffix):
+def write_json(bundle_path,mb_name, data, suffix):
     base_name = os.path.splitext(os.path.basename(bundle_path))[0]
     base_name = base_name.replace(".chapter", "").replace(".book", "")
-    output_path = os.path.join(OUTPUT_DIR, f"{base_name}.{suffix}.json")
+    output_path = os.path.join(OUTPUT_DIR, f"{mb_name}.json")
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
@@ -39,7 +39,7 @@ def extract_chapter(bundle_path):
         if name.endswith(".chapter"):
             found = True
             data = obj.read_typetree()
-            write_json(bundle_path, data, "chapter")
+            write_json(bundle_path, name, data, "chapter")
 
     if not found:
         print("[WARNING] No .chapter MonoBehaviour found.")
@@ -64,7 +64,7 @@ def extract_book(bundle_path):
         if name.endswith(".book"):
             found = True
             data = obj.read_typetree()
-            write_json(bundle_path, data, "book")
+            write_json(bundle_path,name, data, "book")
 
     if not found:
         print("[WARNING] No .book MonoBehaviour found.")

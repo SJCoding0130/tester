@@ -8,23 +8,23 @@ CHAPTER_LIST_FILE = "chapters.txt"  # output from UnityPy script
 BASE_URL = "https://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/"
 SAVE_DIR = "downloaded_assets"
 
-LOG_FILE = "chapter_asset_log.txt"
+#LOG_FILE = "chapter_asset_log.txt"
 META_FILE = "asset_metadata.json"
 
 os.makedirs(SAVE_DIR, exist_ok=True)
 
 # === UTILITIES ===
 # === Overwrite log at start of script ===
-with open(LOG_FILE, "w", encoding="utf-8") as f:
-    f.write(f"=== Log started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ===\n")
+#with open(LOG_FILE, "w", encoding="utf-8") as f:
+#    f.write(f"=== Log started at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')} ===\n")
 
 def log(message: str):
     """Append message to log file with timestamp."""
     timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     line = f"[{timestamp}] {message}"
     print(line)
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        f.write(line + "\n")
+#    with open(LOG_FILE, "a", encoding="utf-8") as f:
+#        f.write(line + "\n")
 
 def load_metadata():
     """Load saved metadata (ETag/Last-Modified info) from file."""
@@ -122,6 +122,7 @@ if __name__ == "__main__":
     else:
         log(" No assets found, skipping download.")
     log("=== Process finished ===")
+
 
 
 

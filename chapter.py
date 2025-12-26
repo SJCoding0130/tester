@@ -4,7 +4,7 @@ import UnityPy
 
 URL = "http://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/Android"
 BUNDLE_FILE = "Android.bundle"
-OUTPUT_FILE = "chapters2.txt"
+OUTPUT_FILE = "chapters.txt"
 
 
 def download_bundle(url, path, etag_file="etag.txt"):
@@ -65,4 +65,5 @@ def list_chapter_assets(bundle_path, output_file):
 if __name__ == "__main__":
     download_bundle(URL, BUNDLE_FILE)
     list_chapter_assets(BUNDLE_FILE, OUTPUT_FILE)
+
 

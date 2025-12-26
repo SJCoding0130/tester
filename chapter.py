@@ -4,7 +4,7 @@ import UnityPy
 
 URL = "http://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/Android"
 BUNDLE_FILE = "Android.bundle"
-OUTPUT_FILE = "chapters.txt"
+OUTPUT_FILE = "chapters2.txt"
 
 
 def download_bundle(url, path):

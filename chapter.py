@@ -7,16 +7,34 @@ BUNDLE_FILE = "Android.bundle"
 OUTPUT_FILE = "chapters2.txt"
 
 
-def download_bundle(url, path):
-    if os.path.exists(path):
+def download_bundle(url, path, etag_file="etag.txt"):
+    headers = {}
+    # If we have a saved ETag, send it to check freshness
+    if os.path.exists(etag_file):
+        with open(etag_file, "r") as f:
+            etag = f.read().strip()
+            headers["If-None-Match"] = etag
+
+    r = requests.get(url, stream=True, headers=headers)
+
+    if r.status_code == 304:
+        print("[INFO] Local file is already the latest version.")
         return
 
-    r = requests.get(url, stream=True)
     r.raise_for_status()
 
+    # Save the new file
     with open(path, "wb") as f:
         for chunk in r.iter_content(chunk_size=8192):
             f.write(chunk)
+
+    # Save the new ETag if provided
+    if "ETag" in r.headers:
+        with open(etag_file, "w") as f:
+            f.write(r.headers["ETag"])
+
+    print("[INFO] File downloaded and updated.")
+
 
 
 def list_chapter_assets(bundle_path, output_file):
@@ -47,3 +65,4 @@ def list_chapter_assets(bundle_path, output_file):
 if __name__ == "__main__":
     download_bundle(URL, BUNDLE_FILE)
     list_chapter_assets(BUNDLE_FILE, OUTPUT_FILE)
+

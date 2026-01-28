@@ -104,7 +104,7 @@ def download_assets(assets):
                 updated_metadata[asset] = {
                     "ETag": etag,
                     "Last-Modified": last_mod,
-                    "Last-Checked": datetime.now().isoformat()
+                    #"Last-Checked": datetime.now().isoformat()
                 }
             else:
                 log(f" FAILED: {asset} (HTTP {response.status_code})")
@@ -122,6 +122,7 @@ if __name__ == "__main__":
     else:
         log(" No assets found, skipping download.")
     log("=== Process finished ===")
+
 
 
 

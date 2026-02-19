@@ -72,27 +72,16 @@ jobs:
     # ==========================
     # 4a. Download Asset Ripper
     # ==========================
-    - name: Download Asset Ripper 0.3.4.0
+    - name: Extract bundles (AssetRipper)
+      run: |
+          cmd /c "curl.exe -L https://github.com/AssetRipper/AssetRipper/releases/download/0.3.4.0/AssetRipper_win_x64.zip > AssetRipper.zip"
+          Expand-Archive -Path AssetRipper.zip -DestinationPath AssetRipper
+          .\AssetRipper\AssetRipper.exe -h
+          
+    - name: Run try.py and test.py
       shell: pwsh
       run: |
-        $url = "https://github.com/AssetRipper/AssetRipper/releases/download/0.3.4.0/AssetRipper_win_x64.zip"
-        $output = "AssetRipper_win_x64.zip"
-        Invoke-WebRequest -Uri $url -OutFile $output
-
-        # Unzip to a folder
-        Expand-Archive -Path $output -DestinationPath "AssetRipper"
-        Remove-Item $output
-        
-        $inputFolder = "downloaded_titles"
-        $outputFolder = "extracted"
-        if (-Not (Test-Path $outputFolder)) { New-Item -ItemType Directory -Path $outputFolder }
-
-        $exe = Join-Path $assetRipperPath "AssetRipper-cli.exe"
-        Get-ChildItem -Path $inputFolder -Filter "*.assets*" -Recurse | ForEach-Object {
-        Write-Host "Extracting asset: $($_.FullName)"
-        & $exe -i $_.FullName -o $outputFolder
-        }
-
+        cd repo_b
         python -u ../test.py
         python -u ../ttt.py
 

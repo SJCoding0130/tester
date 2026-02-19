@@ -68,6 +68,31 @@ jobs:
         cd repo_b
         python -u ../chapter.py
         python -u ../try.py
+
+    # ==========================
+    # 4a. Download Asset Ripper
+    # ==========================
+    - name: Download Asset Ripper 0.3.4.0
+      shell: pwsh
+      run: |
+        $url = "https://github.com/AssetRipper/AssetRipper/releases/download/0.3.4.0/AssetRipper_win_x64.zip"
+        $output = "AssetRipper_win_x64.zip"
+        Invoke-WebRequest -Uri $url -OutFile $output
+
+        # Unzip to a folder
+        Expand-Archive -Path $output -DestinationPath "AssetRipper"
+        Remove-Item $output
+        
+        $inputFolder = "downloaded_titles"
+        $outputFolder = "extracted"
+        if (-Not (Test-Path $outputFolder)) { New-Item -ItemType Directory -Path $outputFolder }
+
+        $exe = Join-Path $assetRipperPath "AssetRipper-cli.exe"
+        Get-ChildItem -Path $inputFolder -Filter "*.assets*" -Recurse | ForEach-Object {
+        Write-Host "Extracting asset: $($_.FullName)"
+        & $exe -i $_.FullName -o $outputFolder
+        }
+
         python -u ../test.py
         python -u ../ttt.py
 

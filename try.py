@@ -8,7 +8,7 @@ CHAPTER_LIST_FILE = "chapters.txt"  # output from UnityPy script
 TITLE_LIST_FILE = "titles.txt"      # output from UnityPy script
 BASE_URL = "https://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/"
 CHAPTER_DIR = "downloaded_chapters"
-TITLE_DIR = "downloaded_titles"
+TITLE_DIR = "downloaded_titles"     # single folder for all title assets
 META_FILE = "asset_metadata.json"
 
 # Ensure folders exist
@@ -23,7 +23,6 @@ def log(message: str):
 
 
 def load_metadata():
-    """Load saved metadata (ETag/Last-Modified info) from file."""
     if os.path.exists(META_FILE):
         with open(META_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
@@ -31,7 +30,6 @@ def load_metadata():
 
 
 def save_metadata(metadata):
-    """Save metadata to disk."""
     with open(META_FILE, "w", encoding="utf-8") as f:
         json.dump(metadata, f, indent=2)
 
@@ -52,13 +50,16 @@ def get_remote_headers(url):
     return {}
 
 
-def download_assets(asset_list, save_folder, metadata):
+def download_assets(asset_list, save_folder, metadata, lump_into_single_folder=False):
     """Download assets from the server with caching via ETag/Last-Modified."""
     updated_metadata = metadata.copy()
 
     for asset in asset_list:
+        # If lumping into single folder, ignore subfolders in asset name
+        file_name = os.path.basename(asset) if lump_into_single_folder else asset
+        save_path = os.path.join(save_folder, file_name)
+
         url = BASE_URL + asset
-        save_path = os.path.join(save_folder, asset)
 
         headers = get_remote_headers(url)
         etag = headers.get("ETag")
@@ -77,7 +78,6 @@ def download_assets(asset_list, save_folder, metadata):
         try:
             response = requests.get(url, timeout=30)
             if response.status_code == 200:
-                # Ensure folder exists for nested paths
                 os.makedirs(os.path.dirname(save_path), exist_ok=True)
                 with open(save_path, "wb") as f:
                     f.write(response.content)
@@ -94,7 +94,6 @@ def download_assets(asset_list, save_folder, metadata):
     return updated_metadata
 
 
-# === STEP: Extract asset filenames from a file ===
 def extract_assets(file_path):
     if not os.path.exists(file_path):
         log(f" List file not found: {file_path}")
@@ -104,7 +103,7 @@ def extract_assets(file_path):
     with open(file_path, "r", encoding="utf-8") as f:
         for line in f:
             name = line.strip()
-            if name:  # skip empty lines
+            if name:
                 assets.append(name)
 
     assets = sorted(set(assets))
@@ -117,20 +116,19 @@ if __name__ == "__main__":
     log("=== Process started ===")
     metadata = load_metadata()
 
-    # Download chapter assets
+    # Download chapter assets (keep original structure)
     chapter_assets = extract_assets(CHAPTER_LIST_FILE)
     if chapter_assets:
         metadata = download_assets(chapter_assets, CHAPTER_DIR, metadata)
     else:
         log(" No chapter assets found, skipping.")
 
-    # Download title assets
+    # Download title assets (lump into single folder)
     title_assets = extract_assets(TITLE_LIST_FILE)
     if title_assets:
-        metadata = download_assets(title_assets, TITLE_DIR, metadata)
+        metadata = download_assets(title_assets, TITLE_DIR, metadata, lump_into_single_folder=True)
     else:
         log(" No title assets found, skipping.")
 
-    # Save updated metadata
     save_metadata(metadata)
     log("=== Process finished ===")

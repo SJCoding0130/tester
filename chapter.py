@@ -4,12 +4,12 @@ import UnityPy
 
 URL = "http://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/Android"
 BUNDLE_FILE = "Android.bundle"
-OUTPUT_FILE = "chapters.txt"
+CHAPTER_FILE = "chapters.txt"
+TITLE_FILE = "titles.txt"  # Combined bg_title and sprite_title
 
 
 def download_bundle(url, path, etag_file="etag.txt"):
     headers = {}
-    # If we have a saved ETag, send it to check freshness
     if os.path.exists(etag_file):
         with open(etag_file, "r") as f:
             etag = f.read().strip()
@@ -23,12 +23,10 @@ def download_bundle(url, path, etag_file="etag.txt"):
 
     r.raise_for_status()
 
-    # Save the new file
     with open(path, "wb") as f:
         for chunk in r.iter_content(chunk_size=8192):
             f.write(chunk)
 
-    # Save the new ETag if provided
     if "ETag" in r.headers:
         with open(etag_file, "w") as f:
             f.write(r.headers["ETag"])
@@ -36,34 +34,43 @@ def download_bundle(url, path, etag_file="etag.txt"):
     print("[INFO] File downloaded and updated.")
 
 
-
-def list_chapter_assets(bundle_path, output_file):
+def list_assets(bundle_path, chapter_output, title_output):
     env = UnityPy.load(bundle_path)
 
-    results = []
+    chapters = []
+    titles = []
 
     for obj in env.objects:
         if obj.type.name == "AssetBundleManifest":
             manifest = obj.read()
-
             for item in manifest.AssetBundleNames:
                 name = item[1] if isinstance(item, (list, tuple)) else item
+
+                # Filter chapter assets
                 if name.endswith(".chapter.asset"):
-                    results.append(name)
+                    chapters.append(name)
+                # Filter assets containing bg_title or sprite_title
+                if "bg_title" in name or "sprite_title" in name:
+                    titles.append(name)
             break
 
-    # 🔽 SORT ALPHABETICALLY
-    results.sort()
+    # Sort alphabetically
+    chapters.sort()
+    titles.sort()
 
-    with open(output_file, "w", encoding="utf-8") as f:
-        for name in results:
+    # Save each list into its respective file
+    with open(chapter_output, "w", encoding="utf-8") as f:
+        for name in chapters:
             f.write(name + "\n")
 
-    print(f"[INFO] {len(results)} entries written (sorted)")
+    with open(title_output, "w", encoding="utf-8") as f:
+        for name in titles:
+            f.write(name + "\n")
+
+    print(f"[INFO] {len(chapters)} chapter entries written to {chapter_output}")
+    print(f"[INFO] {len(titles)} bg/sprite title entries written to {title_output}")
 
 
 if __name__ == "__main__":
     download_bundle(URL, BUNDLE_FILE)
-    list_chapter_assets(BUNDLE_FILE, OUTPUT_FILE)
-
-
+    list_assets(BUNDLE_FILE, CHAPTER_FILE, TITLE_FILE)

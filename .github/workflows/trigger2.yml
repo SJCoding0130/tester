@@ -35,7 +35,11 @@ jobs:
         sparse-checkout: |
           asset_metadata.json
           view.php
-       run: |
+          
+    - name: List files in Repo A
+      shell: pwsh
+      run: |
+        echo "===== Files in Repo A ====="
         Get-ChildItem -Recurse -Force
     # ==========================
     # 3. Set up Python

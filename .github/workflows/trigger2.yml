@@ -76,7 +76,7 @@ jobs:
       run: |
           cmd /c "curl.exe -L https://github.com/AssetRipper/AssetRipper/releases/download/0.3.4.0/AssetRipper_win_x64.zip > AssetRipper.zip"
           Expand-Archive -Path AssetRipper.zip -DestinationPath AssetRipper
-          .\AssetRipper\AssetRipper.exe -h
+          .\AssetRipper\AssetRipper.exe downloaded_titles
           
     - name: Run try.py and test.py
       shell: pwsh

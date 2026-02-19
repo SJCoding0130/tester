@@ -35,7 +35,8 @@ jobs:
         sparse-checkout: |
           asset_metadata.json
           view.php
-
+       run: |
+        Get-ChildItem -Recurse -Force
     # ==========================
     # 3. Set up Python
     # ==========================

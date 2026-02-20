@@ -50,7 +50,7 @@ def list_assets(bundle_path, chapter_output, title_output):
                 if name.endswith(".chapter.asset"):
                     chapters.append(name)
                 # Filter assets containing bg_title or sprite_title
-                if "bg_title" in name or "sprite_title" in name:
+                if "bg_title" in name or "sprite_title" in name or "subtitle" in name:
                     titles.append(name)
             break
 
@@ -74,3 +74,4 @@ def list_assets(bundle_path, chapter_output, title_output):
 if __name__ == "__main__":
     download_bundle(URL, BUNDLE_FILE)
     list_assets(BUNDLE_FILE, CHAPTER_FILE, TITLE_FILE)
+

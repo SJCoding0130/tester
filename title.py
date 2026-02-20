@@ -6,9 +6,8 @@ import datetime
 import traceback
 
 # ===== CONFIG =====
-BASE_DIR = "repo_b"
-SOURCE_DIR = os.path.join(BASE_DIR, "filtered_assets")
-OUTPUT_BASE = "result"
+SOURCE_DIR = os.path.join(os.getcwd(), "filtered_assets")
+OUTPUT_BASE = os.path.join(os.getcwd(), "result")
 LOG_FILE = "reconstruct_log.txt"
 
 # ===== LOGGER =====

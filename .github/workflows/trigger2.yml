@@ -82,12 +82,13 @@ jobs:
     # ==========================
     - name: Extract bundles (AssetRipper)
       run: |
-          cmd /c "curl.exe -L https://github.com/AssetRipper/AssetRipper/releases/download/0.3.4.0/AssetRipper_win_x64.zip > AssetRipper.zip"
-          Expand-Archive -Path AssetRipper.zip -DestinationPath AssetRipper
-           $inputFolder = "repo_b/downloaded_titles"
-           $outputFolder = "repo_b/extracted"
-           if (-Not (Test-Path $outputFolder)) { New-Item -ItemType Directory -Path $outputFolder }
-          .\AssetRipper\AssetRipper.exe $inputFolder -o $outputFolder -q
+          #cmd /c "curl.exe -L https://github.com/AssetRipper/AssetRipper/releases/download/0.3.4.0/AssetRipper_win_x64.zip > AssetRipper.zip"
+          #Expand-Archive -Path AssetRipper.zip -DestinationPath AssetRipper
+           #$inputFolder = "repo_b/downloaded_titles"
+           #$outputFolder = "repo_b/extracted"
+           #if (-Not (Test-Path $outputFolder)) { New-Item -ItemType Directory -Path $outputFolder }
+          #.\AssetRipper\AssetRipper.exe $inputFolder -o $outputFolder -q
+          
     - name: List files in Repo B2
       shell: pwsh
       run: |
@@ -98,6 +99,7 @@ jobs:
       shell: pwsh
       run: |
         cd repo_b
+        python ../asset.py
         python  ../test.py
         python  ../ttt.py
 

@@ -93,8 +93,8 @@ jobs:
       shell: pwsh
       run: |
         cd repo_b
-        python -u ../test.py
-        python -u ../ttt.py
+        python  ../test.py
+        python  ../ttt.py
 
     # ==========================
     # 5. Push repo B updates

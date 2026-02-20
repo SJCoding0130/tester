@@ -88,6 +88,7 @@ jobs:
       run: |
         cd repo_b
         python ../asset.py
+        python ../title.py
         python  ../test.py
         python  ../ttt.py
 

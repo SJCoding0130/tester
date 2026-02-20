@@ -43,7 +43,7 @@ os.makedirs(final_folder, exist_ok=True)
 
 # 6. Define patterns to keep
 patterns = [
-    os.path.join(output_folder, "ExportedProject", "Assets", "Text2D", "*.png"),
+    os.path.join(output_folder, "ExportedProject", "Assets", "Texture2D", "*.png"),
     os.path.join(output_folder, "ExportedProject", "Assets", "adv", "resources", "adv", "texture", "bg", "*asset"),
     os.path.join(output_folder, "ExportedProject", "Assets", "adv", "resources", "adv", "texture", "sprite", "*asset"),
 ]

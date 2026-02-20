@@ -116,6 +116,7 @@ jobs:
         git reset downloaded_assets/
         git reset AssetRipper.zip
         git reset AssetRipper/
+        git reset extracted/
         # git reset json/
         # git add json/common.chapter.json
         git commit -m "Update from Repo A workflow" || echo "No changes"

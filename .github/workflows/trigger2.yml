@@ -58,7 +58,7 @@ jobs:
         php -v
         pip install requests
         pip install UnityPy
-        pip install yaml
+        pip install PyYAML
         
         # 4. Setup PHP
     - name: Setup PHP

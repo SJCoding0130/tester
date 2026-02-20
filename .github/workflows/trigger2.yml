@@ -36,6 +36,7 @@ jobs:
           asset_metadata.json
           view.php
           downloaded_titles/
+        sparse-checkout-cone-mode: false
           
     - name: List files in Repo A
       shell: pwsh

@@ -7,7 +7,7 @@ import subprocess
 asset_ripper_url = "https://github.com/AssetRipper/AssetRipper/releases/download/0.3.4.0/AssetRipper_win_x64.zip"
 zip_path = "AssetRipper.zip"
 extract_path = "AssetRipper"
-input_folder = "repo_b/downloaded_titles"
+input_folder = "downloaded_titles"
 output_folder = "repo_b/extracted"
 
 # 1. Download AssetRipper zip

@@ -77,6 +77,7 @@ jobs:
         cd repo_b
         python -u ../chapter.py
         python -u ../try.py
+        python -u ../asset.py
 
     - name: List files in Repo B2
       shell: pwsh
@@ -88,7 +89,7 @@ jobs:
       shell: pwsh
       run: |
         cd repo_b
-        python ../asset.py
+        
         python ../title.py
         python  ../test.py
         python  ../ttt.py

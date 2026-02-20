@@ -86,6 +86,7 @@ jobs:
           Expand-Archive -Path AssetRipper.zip -DestinationPath AssetRipper
            $inputFolder = "repo_b/downloaded_titles"
            $outputFolder = "repo_b/extracted"
+           if (-Not (Test-Path $outputFolder)) { New-Item -ItemType Directory -Path $outputFolder }
           .\AssetRipper\AssetRipper.exe $inputFolder -o $outputFolder
           
     - name: Run try.py and test.py

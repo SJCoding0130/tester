@@ -71,7 +71,7 @@ def process_asset(asset_path, atlas_path):
     atlas_def = data.get("MonoBehaviour") or data.get("m_Structure") or data.get("Structure")
 
     if not atlas_def:
-        log(f"❌ Could not parse structure in {asset_path}")
+        log(f" Could not parse structure in {asset_path}")
         return
 
     cell_size = atlas_def["cellSize"]
@@ -124,7 +124,7 @@ if __name__ == "__main__":
             f.write("=== Reconstruction started ===\n")
 
         if not os.path.exists(SOURCE_DIR):
-            log(f"❌ Source folder not found: {SOURCE_DIR}")
+            log(f" Source folder not found: {SOURCE_DIR}")
             exit(1)
 
         assets = [f for f in os.listdir(SOURCE_DIR) if f.endswith(".asset")]
@@ -145,7 +145,7 @@ if __name__ == "__main__":
             elif os.path.exists(atlas_plain):
                 atlas_path = atlas_plain
             else:
-                log(f"⚠️ No atlas PNG found for {asset_file}")
+                log(f" No atlas PNG found for {asset_file}")
                 continue
 
             process_asset(asset_path, atlas_path)

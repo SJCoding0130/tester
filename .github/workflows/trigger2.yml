@@ -39,10 +39,10 @@ jobs:
           extracted/
         sparse-checkout-cone-mode: false
           
-    - name: List files in Repo A
+    - name: List files in Repo B
       shell: pwsh
       run: |
-        echo "===== Files in Repo A ====="
+        echo "===== Files in Repo B ====="
         Get-ChildItem -Recurse -Force
     # ==========================
     # 3. Set up Python
@@ -87,7 +87,7 @@ jobs:
            $inputFolder = "repo_b/downloaded_titles"
            $outputFolder = "repo_b/extracted"
            if (-Not (Test-Path $outputFolder)) { New-Item -ItemType Directory -Path $outputFolder }
-          .\AssetRipper\AssetRipper.exe $inputFolder -o $outputFolder
+          .\AssetRipper\AssetRipper.exe $inputFolder -o $outputFolder -q
           
     - name: Run try.py and test.py
       shell: pwsh

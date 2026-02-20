@@ -36,7 +36,7 @@ jobs:
           asset_metadata.json
           view.php
           downloaded_titles/
-          output/
+          extracted/
         sparse-checkout-cone-mode: false
           
     - name: List files in Repo A
@@ -85,8 +85,8 @@ jobs:
           cmd /c "curl.exe -L https://github.com/AssetRipper/AssetRipper/releases/download/0.3.4.0/AssetRipper_win_x64.zip > AssetRipper.zip"
           Expand-Archive -Path AssetRipper.zip -DestinationPath AssetRipper
            $inputFolder = "repo_b/downloaded_titles"
-           $outputFolder = "repo_b/output"
-          .\AssetRipper\AssetRipper.exe $inputFolder
+           $outputFolder = "repo_b/extracted"
+          .\AssetRipper\AssetRipper.exe $inputFolder -o $outputFolder
           
     - name: Run try.py and test.py
       shell: pwsh

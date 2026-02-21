@@ -35,8 +35,8 @@ jobs:
         sparse-checkout: |
           asset_metadata.json
           view.php
-          downloaded_titles/
-          extracted/
+          #downloaded_titles/
+          #extracted/
         #sparse-checkout-cone-mode: false
           
     - name: List files in Repo B

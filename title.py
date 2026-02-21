@@ -35,7 +35,7 @@ UnityLoader.add_multi_constructor('', unity_multi_constructor)
 
 
 # ===== SMART cellIndexList parser =====
-def parse_cell_index_list(data):
+def parse_cell_index_list(data, asset_path=None, texture_name=None):
     if isinstance(data, list):
         return [int(x) for x in data]
 

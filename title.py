@@ -49,7 +49,11 @@ def parse_cell_index_list(data):
             values.append(value)
         return values
 
-    raise ValueError(f"Unsupported cellIndexList format: {type(data)}")
+    # 👇 NEW: detailed error
+    raise ValueError(
+        f"Unsupported cellIndexList format in file '{asset_path}', "
+        f"texture '{texture_name}': type={type(data)}, value={data}"
+    )
 
 
 # ===== MAIN PROCESS =====
@@ -87,7 +91,16 @@ def process_asset(asset_path, atlas_path):
         tex_w = textureData["width"]
         tex_h = textureData["height"]
 
-        cellIndexList = parse_cell_index_list(textureData["cellIndexList"])
+        try:
+          cellIndexList = parse_cell_index_list(
+              textureData["cellIndexList"],
+              asset_path=asset_path,
+              texture_name=name
+          )
+        except Exception as e:
+            log(f"ERROR while parsing cellIndexList in {asset_path}, texture '{name}'")
+            log(str(e))
+            continue  # or use `raise` if you want it to stop execution
 
         canvas_w = ((tex_w + inner_size - 1) // inner_size) * inner_size
         canvas_h = ((tex_h + inner_size - 1) // inner_size) * inner_size

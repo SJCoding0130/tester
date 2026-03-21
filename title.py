@@ -165,6 +165,21 @@ if __name__ == "__main__":
 
             process_asset(asset_path, atlas_path)
 
+        # === FORCE INCLUDE PNG (no processing) ===
+        extra_png = os.path.join(SOURCE_DIR, "bg_title_newyear2017.png")
+
+        if os.path.exists(extra_png):
+            out_dir = os.path.join(OUTPUT_BASE, "extra")
+            os.makedirs(out_dir, exist_ok=True)
+
+            out_path = os.path.join(out_dir, "bg_title_newyear2017.png")
+
+            with open(extra_png, "rb") as src, open(out_path, "wb") as dst:
+                dst.write(src.read())
+
+            log(f"Copied extra PNG without processing: {out_path}")
+        else:
+            log("Extra PNG not found: bg_title_newyear2017.png")
         log("=== All done ===")
 
     except Exception:

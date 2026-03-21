@@ -7,7 +7,7 @@ from datetime import datetime
 CHAPTER_LIST_FILE = "chapters.txt"  # output from UnityPy script
 TITLE_LIST_FILE = "titles.txt"      # output from UnityPy script
 BASE_URL = "https://d15iupkbkbqkwv.cloudfront.net/adv2024/Android/"
-CHAPTER_DIR = "downloaded_chapters"
+CHAPTER_DIR = "downloaded_assets"
 TITLE_DIR = "downloaded_titles"     # single folder for all title assets
 META_FILE = "asset_metadata.json"
 
@@ -132,3 +132,4 @@ if __name__ == "__main__":
 
     save_metadata(metadata)
     log("=== Process finished ===")
+

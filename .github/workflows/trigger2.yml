@@ -35,7 +35,15 @@ jobs:
         sparse-checkout: |
           asset_metadata.json
           view.php
-
+          #downloaded_titles/
+          #extracted/
+        #sparse-checkout-cone-mode: false
+          
+    - name: List files in Repo B
+      shell: pwsh
+      run: |
+        echo "===== Files in Repo B ====="
+        Get-ChildItem -Recurse -Force
     # ==========================
     # 3. Set up Python
     # ==========================
@@ -50,6 +58,7 @@ jobs:
         php -v
         pip install requests
         pip install UnityPy
+        pip install PyYAML
         
         # 4. Setup PHP
     - name: Setup PHP
@@ -68,8 +77,22 @@ jobs:
         cd repo_b
         python -u ../chapter.py
         python -u ../try.py
-        python -u ../test.py
-        python -u ../ttt.py
+        python -u ../asset.py
+
+    - name: List files in Repo B2
+      shell: pwsh
+      run: |
+        echo "===== Files in Repo B ====="
+        Get-ChildItem -Recurse -Force
+        
+    - name: Run try.py and test.py
+      shell: pwsh
+      run: |
+        cd repo_b
+        
+        python ../title.py
+        python  ../test.py
+        python  ../ttt.py
 
     # ==========================
     # 5. Push repo B updates
@@ -82,6 +105,11 @@ jobs:
         git config user.email "github-actions[bot]@users.noreply.github.com"
         git add -A
         git reset downloaded_assets/
+        git reset downloaded_titles/
+        git reset filtered_assets/
+        git reset AssetRipper.zip
+        git reset AssetRipper/
+        git reset extracted/
         # git reset json/
         # git add json/common.chapter.json
         git commit -m "Update from Repo A workflow" || echo "No changes"

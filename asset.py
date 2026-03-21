@@ -46,7 +46,7 @@ patterns = [
     os.path.join(output_folder, "ExportedProject", "Assets", "Texture2D", "*.png"),
     os.path.join(output_folder, "ExportedProject", "Assets", "adv", "resources", "adv", "texture", "bg", "*asset"),
     os.path.join(output_folder, "ExportedProject", "Assets", "adv", "resources", "adv", "texture", "sprite", "*asset"),
-    os.path.join(output_folder, "ExportedProject", "Assets", "adv", "resources", "adv", "texture", "bg", "*png"),
+    os.path.join(output_folder, "ExportedProject", "Assets", "adv", "resources", "adv", "texture", "bg", "*.png"),
 ]
 
 # 7. Move matching files into one folder

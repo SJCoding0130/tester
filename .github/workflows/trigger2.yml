@@ -106,7 +106,7 @@ jobs:
         git add -A
         git reset downloaded_assets/
         git reset downloaded_titles/
-        #git reset filtered_assets/
+        git reset filtered_assets/
         git reset AssetRipper.zip
         git reset AssetRipper/
         git reset extracted/

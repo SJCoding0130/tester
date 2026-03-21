@@ -146,7 +146,7 @@ if __name__ == "__main__":
 
         if not assets:
             log("No .asset files found.")
-            exit(0)
+            #exit(0)
 
         for asset_file in assets:
             asset_path = os.path.join(SOURCE_DIR, asset_file)

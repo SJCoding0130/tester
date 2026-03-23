@@ -111,6 +111,7 @@ jobs:
         git reset AssetRipper/
         git reset extracted/
         # git reset json/
+        # git reset reconstruct_log.txt/
         # git add json/common.chapter.json
         git commit -m "Update from Repo A workflow" || echo "No changes"
         git push

@@ -159,6 +159,12 @@ $text = preg_replace('/<param=([^>]+)>/', '&lt;param=\1&gt;', $text);
             } elseif ($cmd === "Bgm") {
                 $text = htmlspecialchars($strings[1] ?? '');
                 $html .= "<p>BGM: $text</p>\n";
+//Test Start
+            }elseif($cmd === "TitleImage"){
+    		    $text1 = htmlspecialchars($strings[1] ?? '');
+                $text2 = htmlspecialchars($strings[2] ?? '');
+                $html .= "<p>Title: $text1- $text2</p>\n";
+//Test End    
             } else {
                 $chara = trim($strings[1] ?? '');
                 $emotion = trim($strings[2] ?? '');

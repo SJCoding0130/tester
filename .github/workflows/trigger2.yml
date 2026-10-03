@@ -36,7 +36,7 @@ jobs:
           asset_metadata.json
           view.php
           title.json
-          json/common.chapter.json
+          json/common_chapter.json
           #downloaded_titles/
           #extracted/
         #sparse-checkout-cone-mode: false

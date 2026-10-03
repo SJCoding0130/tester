@@ -35,6 +35,7 @@ jobs:
         sparse-checkout: |
           asset_metadata.json
           view.php
+          title.json
           #downloaded_titles/
           #extracted/
         #sparse-checkout-cone-mode: false

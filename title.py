@@ -2,19 +2,19 @@ import os
 import json
 import yaml
 from PIL import Image
-import datetime
+#import datetime
 import traceback
 
 # ===== CONFIG =====
 SOURCE_DIR = os.path.join(os.getcwd(), "filtered_assets")
 OUTPUT_BASE = os.path.join(os.getcwd(), "result")
-LOG_FILE = "reconstruct_log.txt"
+#LOG_FILE = "reconstruct_log.txt"
 
 # ===== LOGGER =====
 def log(msg):
     print(msg)
-    with open(LOG_FILE, "a", encoding="utf-8") as f:
-        f.write(f"{datetime.datetime.now()}: {msg}\n")
+    #with open(LOG_FILE, "a", encoding="utf-8") as f:
+    #    f.write(f"{datetime.datetime.now()}: {msg}\n")
 
 
 # ===== UNITY YAML LOADER =====
@@ -135,8 +135,8 @@ def process_asset(asset_path, atlas_path):
 
 if __name__ == "__main__":
     try:
-        with open(LOG_FILE, "w", encoding="utf-8") as f:
-            f.write("=== Reconstruction started ===\n")
+        #with open(LOG_FILE, "w", encoding="utf-8") as f:
+        #    f.write("=== Reconstruction started ===\n")
 
         if not os.path.exists(SOURCE_DIR):
             log(f" Source folder not found: {SOURCE_DIR}")

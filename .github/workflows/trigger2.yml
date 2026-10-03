@@ -39,7 +39,7 @@ jobs:
           json/common.chapter.json
           #downloaded_titles/
           #extracted/
-        #sparse-checkout-cone-mode: false
+        sparse-checkout-cone-mode: false
           
     - name: List files in Repo B
       shell: pwsh

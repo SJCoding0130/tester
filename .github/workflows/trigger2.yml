@@ -81,11 +81,7 @@ jobs:
         python -u ../try.py
         python -u ../asset.py
 
-    - name: List files in Repo B2
-      shell: pwsh
-      run: |
-        echo "===== Files in Repo B ====="
-        Get-ChildItem -Recurse -Force
+
         
     - name: Run try.py and test.py
       shell: pwsh
@@ -95,7 +91,12 @@ jobs:
         python ../title.py
         python  ../test.py
         python  ../ttt.py
-
+        
+    - name: List files in Repo B2
+      shell: pwsh
+      run: |
+        echo "===== Files in Repo B ====="
+        Get-ChildItem -Recurse -Force
     # ==========================
     # 5. Push repo B updates
     # ==========================
